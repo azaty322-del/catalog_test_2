@@ -1,0 +1,4778 @@
+{
+  "meta": {
+    "source": "Каталог_контента_UTV_Media.xlsx",
+    "note": "Сгенерировано scripts/import-catalog.py. Правки вносите в Excel и запускайте импорт заново."
+  },
+  "categories": [
+    {
+      "id": "cat-1",
+      "slug": "nature",
+      "title": {
+        "ru": "Природа",
+        "en": "Nature"
+      },
+      "showInNav": true,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-2",
+      "slug": "travel",
+      "title": {
+        "ru": "Путешествия",
+        "en": "Travel"
+      },
+      "showInNav": true,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-3",
+      "slug": "cooking",
+      "title": {
+        "ru": "Кулинария и еда",
+        "en": "Food & Cooking"
+      },
+      "showInNav": true,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-4",
+      "slug": "science",
+      "title": {
+        "ru": "Научпоп",
+        "en": "Popular Science"
+      },
+      "showInNav": false,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-5",
+      "slug": "educational",
+      "title": {
+        "ru": "Познавательный",
+        "en": "Educational"
+      },
+      "showInNav": false,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-6",
+      "slug": "experts",
+      "title": {
+        "ru": "Эксперты",
+        "en": "Experts"
+      },
+      "showInNav": false,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-7",
+      "slug": "garden",
+      "title": {
+        "ru": "Дача и сад",
+        "en": "Garden & Country"
+      },
+      "showInNav": false,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-8",
+      "slug": "kids",
+      "title": {
+        "ru": "Детям и подросткам",
+        "en": "Kids & Teens"
+      },
+      "showInNav": false,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-9",
+      "slug": "fitness",
+      "title": {
+        "ru": "Тренировки",
+        "en": "Fitness"
+      },
+      "showInNav": false,
+      "isEmpty": false
+    },
+    {
+      "id": "cat-10",
+      "slug": "on-request",
+      "title": {
+        "ru": "Под запрос",
+        "en": "On Request"
+      },
+      "showInNav": false,
+      "isEmpty": false
+    }
+  ],
+  "movies": [
+    {
+      "id": "mv-001",
+      "title": {
+        "ru": "Свидание с природой.1 сезон",
+        "en": "Свидание с природой.1 сезон"
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/uploads/1788333248663-8bi763.jpg",
+      "tags": [
+        "водопад"
+      ],
+      "stills": [
+        "/uploads/1788507952894-1c64bw.jpg"
+      ],
+      "year": 2024,
+      "description": "Антистресс-сериал «Свидание с природой» отключает поток тревожных мыслей и включает состояние покоя, целостности и наполненности.",
+      "trailerUrl": "https://youtu.be/JUXVFarN6jg",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5316,
+      "_rawTitle": {
+        "ru": "Свидание с природой.1 сезон",
+        "en": "A Date with Nature. Season 1"
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/uploads/1788333248663-8bi763.jpg",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-002",
+      "title": {
+        "ru": "Свидание с природой. 2 сезон. Страны.",
+        "en": "Свидание с природой. 2 сезон. Страны."
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Антистресс-сериал представляет собой 10 эпизодов-свиданий с уникальными природными явлениями. Съемки природы более чем в 350 локациях по всему миру в течение 8 лет.",
+      "trailerUrl": "https://youtu.be/qz3DRcLr18w",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2017,
+      "_rawTitle": {
+        "ru": "Свидание с природой. 2 сезон. Страны.",
+        "en": "A Date with Nature. Season 2. Countries."
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-003",
+      "title": {
+        "ru": "Свидание с природой. 3 сезон. Элементы.",
+        "en": "Свидание с природой. 3 сезон. Элементы."
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Кадры антисстресс-сериала знакомят зрителей с разнообразными ландшафтами: от пышных лесов и живописных пляжей до горных вершин и спокойных озёр.",
+      "trailerUrl": "https://www.youtube.com/watch?v=YzqEggg7IMM",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5483,
+      "_rawTitle": {
+        "ru": "Свидание с природой. 3 сезон. Элементы.",
+        "en": "A Date with Nature. Season 3. Elements."
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-004",
+      "title": {
+        "ru": "Свидание с природой. 4 сезон. Музыка природы.",
+        "en": "Свидание с природой. 4 сезон. Музыка природы."
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Контент антистресс-сериала представлен коллекцией потрясающих видеосъемок природы, сопровождающихся природными звуками без нарратива.",
+      "trailerUrl": "https://youtu.be/UE8-VBJ9Ulo",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2758,
+      "_rawTitle": {
+        "ru": "Свидание с природой. 4 сезон. Музыка природы.",
+        "en": "A Date with Nature. Season 4. The Music of Nature."
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-005",
+      "title": {
+        "ru": "Свидание с природой. 5 сезон. Россия - это наш дом.",
+        "en": "Свидание с природой. 5 сезон. Россия - это наш дом."
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Пятый сезон документального сериала посвящён уникальной природе России. Зрителей ждёт путешествие по самым живописным уголкам страны: от Кавказских гор до берегов Байкала.",
+      "trailerUrl": "https://rutube.ru/video/private/d159e0b7f319bae1c41dd7cbb9ae28e0/?p=-yYv8sLYx-phlHRy2wxCRg",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3983,
+      "_rawTitle": {
+        "ru": "Свидание с природой. 5 сезон. Россия - это наш дом.",
+        "en": "A Date with Nature. Season 5. Russia Is Our Home."
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-006",
+      "title": {
+        "ru": "Документальный сериал \"Живая природа\"",
+        "en": "Документальный сериал \"Живая природа\""
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Увлекательное путешествие по самым отдалённым и прекрасным уголкам нашей планеты. Захватывающие дух виды дикой природы, уникальные звуки и самые интересные факты о флоре и фауне.",
+      "trailerUrl": "https://youtu.be/5ez0OziQ0I4",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6794,
+      "_rawTitle": {
+        "ru": "Документальный сериал \"Живая природа\"",
+        "en": "Documentary Series \"Wildlife\""
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-007",
+      "title": {
+        "ru": "Видео-медитации \"Спокойствие в каждом кадре\"",
+        "en": "Видео-медитации \"Спокойствие в каждом кадре\""
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Видео-медитации, объединяющие красоту природы с практиками для достижения внутренней гармонии и покоя.",
+      "trailerUrl": "https://youtu.be/unlUUknUwkE",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6493,
+      "_rawTitle": {
+        "ru": "Видео-медитации \"Спокойствие в каждом кадре\"",
+        "en": "Video Meditations \"Calm in Every Frame\""
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-008",
+      "title": {
+        "ru": "Геометка. 1 сезон",
+        "en": "Геометка. 1 сезон"
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Документальный сериал открывает зрителям красоту удивительных уголков Земли. Каждая серия - новое путешествие длиной в 3 минуты, наполненное красотой, открытиями и вдохновением. .",
+      "trailerUrl": "https://youtu.be/Kazlg7A1LjQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3887,
+      "_rawTitle": {
+        "ru": "Геометка. 1 сезон",
+        "en": "Geotag. Season 1"
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-009",
+      "title": {
+        "ru": "Геометка. 2 сезон",
+        "en": "Геометка. 2 сезон"
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Документальный сериал, снятый в 4K позволяет рассмотреть каждую природную деталь и не только оценить красоту мест, но и глубже понять, насколько уникальна и разнообразна природа нашей страны.",
+      "trailerUrl": "https://youtu.be/Kazlg7A1LjQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7211,
+      "_rawTitle": {
+        "ru": "Геометка. 2 сезон",
+        "en": "Geotag. Season 2"
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-010",
+      "title": {
+        "ru": "Геометка. 3 сезон",
+        "en": "Геометка. 3 сезон"
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Документальный сериал, видео в формате 4K с максимальной детализацией. Визуальное приключение, которое раскрывает первозданную красоту природы и её удивительные тайны.",
+      "trailerUrl": "https://youtu.be/Kazlg7A1LjQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6735,
+      "_rawTitle": {
+        "ru": "Геометка. 3 сезон",
+        "en": "Geotag. Season 3"
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-011",
+      "title": {
+        "ru": "Сказки Живой Природы HD",
+        "en": "Сказки Живой Природы HD"
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Антистресс-сериал. Виды и звуки природы изящно переплетены со словами и интонациями, дарящими душевное равновесие и спокойствие.",
+      "trailerUrl": "https://youtu.be/mOtuvkRreP8",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2205,
+      "_rawTitle": {
+        "ru": "Сказки Живой Природы HD",
+        "en": "Fairy Tales of Living Nature HD"
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-012",
+      "title": {
+        "ru": "Сказки Живой Природы (по 26 минут)",
+        "en": "Сказки Живой Природы (по 26 минут)"
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Терапия природой. Видео, которые вернут душевное равновесие через визуальные образы и звук.",
+      "trailerUrl": "https://youtu.be/WSqxwCeeLkM",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3906,
+      "_rawTitle": {
+        "ru": "Сказки Живой Природы (по 26 минут)",
+        "en": "Fairy Tales of Living Nature (26-minute episodes)"
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-013",
+      "title": {
+        "ru": "Медитации для внутренней гармонии",
+        "en": "Медитации для внутренней гармонии"
+      },
+      "category": "Природа",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Практики расслабления, восстановления внутреннего ресурса и обретения душевного равновесия. Погружение в состояние покоя через аудиовизуальные образы.",
+      "trailerUrl": "https://disk.yandex.ru/d/F6BaCX7UA9nocQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4608,
+      "_rawTitle": {
+        "ru": "Медитации для внутренней гармонии",
+        "en": "Meditations for Inner Harmony"
+      },
+      "categoryId": "nature",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-014",
+      "title": {
+        "ru": "За порогом (12+), некоторые серии 16+, 18+",
+        "en": "За порогом (12+), некоторые серии 16+, 18+"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "На автомобиле по России и ближайшему зарубежью в компании фанатичного путешественника Андрея Кузьмина.",
+      "trailerUrl": "https://www.youtube.com/watch?v=Dlh3Sfni3Cw",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3643,
+      "_rawTitle": {
+        "ru": "За порогом (12+), некоторые серии 16+, 18+",
+        "en": "Beyond the Threshold (12+, some episodes 16+, 18+)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-015",
+      "title": {
+        "ru": "Check-In: Индия",
+        "en": "Check-In: Индия"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "\"CHECKINERS: Индия — это захватывающее визуальное путешествие по самым ярким, самобытным и противоречивым городам Индии. Глубокое погружение в культуру, архитектуру, традиции и повседневную жизнь индийских городов.",
+      "trailerUrl": "https://www.youtube.com/watch?v=xg4yCVF6zok&t=2s",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5003,
+      "_rawTitle": {
+        "ru": "Check-In: Индия",
+        "en": "Check-In: India"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-016",
+      "title": {
+        "ru": "Дмитрий Смирнов",
+        "en": "Дмитрий Смирнов"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Проект от опытных путешественников, исследующих мир от Петербурга до Гонконга. В сериях показаны приключения и уникальные моменты из поездок с ночёвками в самых разных условиях — от скамеек в парках до отелей Michelin.",
+      "trailerUrl": "https://www.youtube.com/watch?v=XFLsuGRB_u4&t=2414s",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8443,
+      "_rawTitle": {
+        "ru": "Дмитрий Смирнов",
+        "en": "Dmitry Smirnov"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-017",
+      "title": {
+        "ru": "DiKa",
+        "en": "DiKa"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Экспедиция длиной 140 000 км и 1000 дней на самодельном автодоме. Цель — объехать весь земной шар (66 стран) и доказать, что автопутешествия — это интересный и бюджетный вид отдыха, полный приключений в стиле Vanlife.",
+      "trailerUrl": "https://www.youtube.com/watch?v=qTjrIV7Zx5k&t=3s",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2637,
+      "_rawTitle": {
+        "ru": "DiKa",
+        "en": "DiKa"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-018",
+      "title": {
+        "ru": "Всё лето в тайге",
+        "en": "Всё лето в тайге"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Экспедиции в тайгу — от сборов снаряжения до приготовления еды на костре и ночевок в палатке. Автор показывает, как решать бытовые задачи в лесу, например, защищаться от назойливых насекомых или готовить хлеб в полевых условиях.",
+      "trailerUrl": "https://www.youtube.com/playlist?list=PLHsYx9dDZAm67g_Mz8EbRwiSIsI6OthEo",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2782,
+      "_rawTitle": {
+        "ru": "Всё лето в тайге",
+        "en": "A Whole Summer in the Taiga"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-019",
+      "title": {
+        "ru": "Байкал",
+        "en": "Байкал"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Зимнее путешествие по острову Ольхон. Маршрут включает мыс Бурхан (Шаман-скала), северную точку — мыс Хобой с ледовыми гротами, и остров Огой со ступой Просвещения. В программе — «поцелуй Байкала», катание на коньках по чистому льду и эпизод о том, как ночью слышно дыхание озера.",
+      "trailerUrl": "https://vkvideo.ru/video41918625_456239764?pl=41918625_-2",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2041,
+      "_rawTitle": {
+        "ru": "Байкал",
+        "en": "Baikal"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-020",
+      "title": {
+        "ru": "Два дня в Карелии",
+        "en": "Два дня в Карелии"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Поездка в Карелию на автомобиле. Ночевка на Ладожских шхерах, посещение горного парка Рускеала и Рускеальских водопадов, самым большим из которых является водопад Ахвенковски.",
+      "trailerUrl": "https://youtu.be/pQJ3JWDs-rI",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5089,
+      "_rawTitle": {
+        "ru": "Два дня в Карелии",
+        "en": "Two Days in Karelia"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-021",
+      "title": {
+        "ru": "Соловецкие острова",
+        "en": "Соловецкие острова"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Путеводитель по Соловкам от путешественника Александра Головина. В выпуске рассказывается, как добраться, где остановиться и когда лучше ехать. Ключевые темы: история монастыря, наблюдение за морскими зайцами и белухами на острове",
+      "trailerUrl": "https://youtu.be/DNYoaI8HGOY",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5699,
+      "_rawTitle": {
+        "ru": "Соловецкие острова",
+        "en": "The Solovetsky Islands"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-022",
+      "title": {
+        "ru": "Кавказкий заповедник и Эльбрус с Алексеем Жирухиным",
+        "en": "Кавказкий заповедник и Эльбрус с Алексеем Жирухиным"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "4-х дневный поход по нетуристическим закрытым местам Кавказского заповедника. Медведи, туры и зубры в живой природе.",
+      "trailerUrl": "https://youtu.be/VA7Xayn5sKk",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6956,
+      "_rawTitle": {
+        "ru": "Кавказкий заповедник и Эльбрус с Алексеем Жирухиным",
+        "en": "The Caucasus Nature Reserve and Elbrus with Alexey Zhirukhin"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-023",
+      "title": {
+        "ru": "Дагестан",
+        "en": "Дагестан"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Жизнь в автодоме и путешествия семьи Шотиных по Дагестану: Сулакский каньон, бархан Сарыкум, Махачкала, село Гимры, Дербент и многое другое.",
+      "trailerUrl": "https://youtu.be/qLc8PkQ5Ors",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7550,
+      "_rawTitle": {
+        "ru": "Дагестан",
+        "en": "Dagestan"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-024",
+      "title": {
+        "ru": "Жизнь в автодоме",
+        "en": "Жизнь в автодоме"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Видео о постоянной жизни и путешествиях в автодоме. Показаны все бытовые аспекты: где найти воду, чем отапливаться, как решать вопросы со стиркой и парковкой. Честный взгляд на проживание в доме на колёсах.",
+      "trailerUrl": "https://youtu.be/XbTdBxu2yTc",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7877,
+      "_rawTitle": {
+        "ru": "Жизнь в автодоме",
+        "en": "Life in a Motorhome"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-025",
+      "title": {
+        "ru": "Калмыкия",
+        "en": "Калмыкия"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Семья тревел-блогеров,отправляется в путешествие по бескрайним степям Калмыкии, демонстрируя быт внутри компактного автодома. Выпуск показывает контраст между комфортом и свободой кочевой жизни, раскрывая красоту калмыцкой природы через призму семейного приключения.",
+      "trailerUrl": "https://youtu.be/5A4c4FV5bHQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4899,
+      "_rawTitle": {
+        "ru": "Калмыкия",
+        "en": "Kalmykia"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-026",
+      "title": {
+        "ru": "Путешествие на край света",
+        "en": "Путешествие на край света"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "От суровых Хибин до легендарной Териберки. Герои ищут самый красивый водопад и ловят дзен на краю света.",
+      "trailerUrl": "https://youtu.be/nHHe6LbaQMg",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7234,
+      "_rawTitle": {
+        "ru": "Путешествие на край света",
+        "en": "Journey to the Edge of the World"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-027",
+      "title": {
+        "ru": "Алтай. Путешествие по краю Укока",
+        "en": "Алтай. Путешествие по краю Укока"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Путешествие на плато Укок — одно из самых уникальных мест Алтая. Особое событие экспедиции - встреча с главным героем Алтая, снежным барсом.",
+      "trailerUrl": "https://www.youtube.com/watch?v=cZMJZ2DcujM",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7687,
+      "_rawTitle": {
+        "ru": "Алтай. Путешествие по краю Укока",
+        "en": "Altai. A Journey Across the Ukok Plateau"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-028",
+      "title": {
+        "ru": "2 месяца с женой в тайге",
+        "en": "2 месяца с женой в тайге"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Быт в сердце тайги. Как Константин и Наталья прошли 15 рек и нашли своё место там, где заканчивается цивилизация.",
+      "trailerUrl": "https://youtu.be/Bcv0b6zI-pc",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2443,
+      "_rawTitle": {
+        "ru": "2 месяца с женой в тайге",
+        "en": "2 Months with My Wife in the Taiga"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-029",
+      "title": {
+        "ru": "Трансуральская экспедиция",
+        "en": "Трансуральская экспедиция"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "В одиночку и без остановок первый в истории пеший переход через весь Урал. От реки до крайней северной вершины.",
+      "trailerUrl": "https://youtu.be/V3bPRSuBJJk",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3248,
+      "_rawTitle": {
+        "ru": "Трансуральская экспедиция",
+        "en": "The Trans-Ural Expedition"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-030",
+      "title": {
+        "ru": "Путешествия с Павлом Макаровым",
+        "en": "Путешествия с Павлом Макаровым"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "«Трудные путешествия» с Павлом Макаровым - это исследование экстремальных, труднодоступных и опасных уголков планеты. Опытный путешественник (объехавший более 80 стран), отправляется туда, куда обычный турист не доберется: в ледяные пещеры Антарктиды, к племенам Амазонки или на вершины неприступных гор.",
+      "trailerUrl": "https://youtu.be/UBSJ-JgvPkw",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4148,
+      "_rawTitle": {
+        "ru": "Путешествия с Павлом Макаровым",
+        "en": "Traveling with Pavel Makarov"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-031",
+      "title": {
+        "ru": "Дорога на Диксон",
+        "en": "Дорога на Диксон"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Портреты жителей Крайнего Севера. Истории трактористов, вахтовиков и коренных народов тундры о быте, трудностях и радостях жизни в Арктике.",
+      "trailerUrl": "https://youtu.be/dXgdYRUmeQ8",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8367,
+      "_rawTitle": {
+        "ru": "Дорога на Диксон",
+        "en": "The Road to Dikson"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-032",
+      "title": {
+        "ru": "Остров Белый",
+        "en": "Остров Белый"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Экспедиция на внедорожниках на самый северный остров Ямала. Жизнь на полярной метеостанции и встречи с белыми медведями.",
+      "trailerUrl": "https://youtu.be/cbT7P4C18h4",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8886,
+      "_rawTitle": {
+        "ru": "Остров Белый",
+        "en": "Bely Island"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-033",
+      "title": {
+        "ru": "Камерзанов. Неизведанная Азия (сезон 1)",
+        "en": "Камерзанов. Неизведанная Азия (сезон 1)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Автомобильная экспедиция по малоизученным регионам Азии. Реальные дороги, бездорожье и встречи с местными жителями вдали от туристических маршрутов.",
+      "trailerUrl": "https://vkvideo.ru/video-150896555_456239148",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2691,
+      "_rawTitle": {
+        "ru": "Камерзанов. Неизведанная Азия (сезон 1)",
+        "en": "Kamerzanov. Undiscovered Asia (Season 1)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-034",
+      "title": {
+        "ru": "Камерзанов. Нешелковый путь (сезон 2)",
+        "en": "Камерзанов. Нешелковый путь (сезон 2)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Исторический маршрут как современное дорожное приключение. Путешествие через пустыни и горы, сочетающее историю, культуру и испытание на прочность.",
+      "trailerUrl": "https://vkvideo.ru/video-150896555_456239158",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3961,
+      "_rawTitle": {
+        "ru": "Камерзанов. Нешелковый путь (сезон 2)",
+        "en": "Kamerzanov. The Non-Silk Road (Season 2)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-035",
+      "title": {
+        "ru": "Камерзанов. От Кавказа до Аравии (сезон 3)",
+        "en": "Камерзанов. От Кавказа до Аравии (сезон 3)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Экспедиция через контрастные регионы. Горные перевалы, пустыни и закрытые территории, где на каждом километре меняются культура и традиции.",
+      "trailerUrl": "https://www.youtube.com/watch?v=UzQQ62u8XCQ&list=PLUyxmxR1Dhb1YKxViEvnTyi8OHVazi9Id&index=11",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1055,
+      "_rawTitle": {
+        "ru": "Камерзанов. От Кавказа до Аравии (сезон 3)",
+        "en": "Kamerzanov. From the Caucasus to Arabia (Season 3)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-036",
+      "title": {
+        "ru": "Камерзанов. НЕближний Восток (сезон 4)",
+        "en": "Камерзанов. НЕближний Восток (сезон 4)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Ближний Восток без прикрас. Экспедиция, показывающая жизнь, дороги и людей, которые остаются за кадром стандартных туристических маршрутов.",
+      "trailerUrl": "https://www.youtube.com/watch?v=vxTW_G97KDU&list=PLUyxmxR1Dhb3ubFKbU8x7W6BUxbTkkR2w&index=1",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5225,
+      "_rawTitle": {
+        "ru": "Камерзанов. НЕближний Восток (сезон 4)",
+        "en": "Kamerzanov. The NOT-So-Middle East (Season 4)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-037",
+      "title": {
+        "ru": "Камерзанов. По обе стороны экватора (сезон 5)",
+        "en": "Камерзанов. По обе стороны экватора (сезон 5)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Альтернативный взгляд на регион через автомобильные маршруты. Исследование настоящей жизни, быта и людей вдали от стандартных туристических точек.",
+      "trailerUrl": "https://vk.com/video4276891_456239782",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3092,
+      "_rawTitle": {
+        "ru": "Камерзанов. По обе стороны экватора (сезон 5)",
+        "en": "Kamerzanov. On Both Sides of the Equator (Season 5)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-038",
+      "title": {
+        "ru": "Камерзанов. На край Африки (сезон 6)",
+        "en": "Камерзанов. На край Африки (сезон 6)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Экспедиция к самым удалённым точкам Африки. Маршрут через дикую природу, без фильтров с мощной и живой энергией.",
+      "trailerUrl": "https://www.youtube.com/watch?v=JcpVMoo9OOM&list=PLUyxmxR1Dhb13VAp1G-7bXH-zdM1zIGuO&index=1",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1062,
+      "_rawTitle": {
+        "ru": "Камерзанов. На край Африки (сезон 6)",
+        "en": "Kamerzanov. To the Edge of Africa (Season 6)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-039",
+      "title": {
+        "ru": "Камерзанов. Из КОНГО в КОНГО через КОНГО (сезон 7)",
+        "en": "Камерзанов. Из КОНГО в КОНГО через КОНГО (сезон 7)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Путешествие через бассейн реки Конго - одна из самых сложных экспедиций. Логистика и выживание, реальная работа экспедиционной команды в экстремальных условиях.",
+      "trailerUrl": "https://vkvideo.ru/video-78292803_456239520",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3973,
+      "_rawTitle": {
+        "ru": "Камерзанов. Из КОНГО в КОНГО через КОНГО (сезон 7)",
+        "en": "Kamerzanov. From Congo to Congo Through Congo (Season 7)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-040",
+      "title": {
+        "ru": "Камерзанов. В сердце Африки(сезон 8)",
+        "en": "Камерзанов. В сердце Африки(сезон 8)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Глубокое погружение в центральную Африку — туда, куда редко доходят съёмочные группы. Это не просто тревел, это исследование территории и людей через формат автомобильной экспедиции.",
+      "trailerUrl": "https://tel.yandex.ru/video/preview/9294473495592911030",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3708,
+      "_rawTitle": {
+        "ru": "Камерзанов. В сердце Африки(сезон 8)",
+        "en": "Kamerzanov. In the Heart of Africa (Season 8)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-041",
+      "title": {
+        "ru": "Камерзанов. Побег из Африки (сезон 9)",
+        "en": "Камерзанов. Побег из Африки (сезон 9)"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Логистически сложный и напряжённый путь через несколько африканских стран и границ. Проект показывает не только красоту, но и реальные трудности экспедиции высокого уровня.",
+      "trailerUrl": "https://www.youtube.com/watch?v=rlMzKNPDnOA&list=PLUyxmxR1Dhb3VHU8AW9SGaRY70rlTIeKd&index=1",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4780,
+      "_rawTitle": {
+        "ru": "Камерзанов. Побег из Африки (сезон 9)",
+        "en": "Kamerzanov. Escape from Africa (Season 9)"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-042",
+      "title": {
+        "ru": "Дом лесника",
+        "en": "Дом лесника"
+      },
+      "category": "Путешествия",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Уютный и тёплый дом, построенный с нуля за 10 месяцев. Видео показывает весь процесс — от первого бревна до первой ночёвки.",
+      "trailerUrl": "https://www.youtube.com/watch?v=EMJefBlfNec",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3514,
+      "_rawTitle": {
+        "ru": "Дом лесника",
+        "en": "The Forester's House"
+      },
+      "categoryId": "travel",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-043",
+      "title": {
+        "ru": "Форма вкуса",
+        "en": "Форма вкуса"
+      },
+      "category": "Кулинария и еда",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Готовим с Саней полезные блюда ,которые заряжают на продуктивный день. Уникальный формат: фитнес-блоки встроены прямо в процесс готовки. Оставайтесь в тонусе без спортзала!",
+      "trailerUrl": "https://disk.yandex.ru/d/a0WK7KI8cmjGkg",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3133,
+      "_rawTitle": {
+        "ru": "Форма вкуса",
+        "en": "The Shape of Flavor"
+      },
+      "categoryId": "culinary",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-044",
+      "title": {
+        "ru": "Секреты балканской кухни",
+        "en": "Секреты балканской кухни"
+      },
+      "category": "Кулинария и еда",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Проверенные рецепты и секреты Средиземноморья от шефа Филипа и его помощника Златко. Готовка превращается в настоящее шоу вкуса.",
+      "trailerUrl": "https://disk.yandex.ru/d/o1JRMynN5Owo2w",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3298,
+      "_rawTitle": {
+        "ru": "Секреты балканской кухни",
+        "en": "Secrets of Balkan Cuisine"
+      },
+      "categoryId": "culinary",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-045",
+      "title": {
+        "ru": "О чем говорят вкусы",
+        "en": "О чем говорят вкусы"
+      },
+      "category": "Кулинария и еда",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Шум прибоя, локальные продукты, душевные истории и теплые встречи за общим столом. Путешествие по Средиземноморью, после которого хочется жить вкуснее и счастливее.",
+      "trailerUrl": "https://disk.yandex.ru/d/ZOB-HRAztflY4Q",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2309,
+      "_rawTitle": {
+        "ru": "О чем говорят вкусы",
+        "en": "What Flavors Talk About"
+      },
+      "categoryId": "culinary",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-046",
+      "title": {
+        "ru": "Едоки",
+        "en": "Едоки"
+      },
+      "category": "Кулинария и еда",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Где самая вкусная еда в городе: в дорогом ресторане или в маленьком киоске у дома? Ведущие знают ответ!",
+      "trailerUrl": "https://www.youtube.com/watch?v=zZoGKQBQ1vY",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2314,
+      "_rawTitle": {
+        "ru": "Едоки",
+        "en": "The Eaters"
+      },
+      "categoryId": "culinary",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-047",
+      "title": {
+        "ru": "Дороже золота",
+        "en": "Дороже золота"
+      },
+      "category": "Научпоп",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Научно-популярный фильм, как рождается золото и почему оно веками определяло судьбы цивилизаций. Путешествие от геологии недр до истории человечества.",
+      "trailerUrl": "https://vkvideo.ru/video-67004279_456239486?sh=4",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8215,
+      "_rawTitle": {
+        "ru": "Дороже золота",
+        "en": "Worth More Than Gold"
+      },
+      "categoryId": "science",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-048",
+      "title": {
+        "ru": "Главный металл человечества",
+        "en": "Главный металл человечества"
+      },
+      "category": "Научпоп",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Фильм о роли меди в развитии человечества: От первых орудий до современных технологий. Рассказ о том, как этот металл стал фундаментом промышленности и энергетики.",
+      "trailerUrl": "https://vkvideo.ru/video-119011823_456240316?sh=4",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2168,
+      "_rawTitle": {
+        "ru": "Главный металл человечества",
+        "en": "Humanity's Most Important Metal"
+      },
+      "categoryId": "science",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-049",
+      "title": {
+        "ru": "Добыча с умом",
+        "en": "Добыча с умом"
+      },
+      "category": "Научпоп",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Как современные технологии делают горнодобывающую отрасль экологичной и безопасной. Взгляд на «умную» добычу ресурсов и ответственный подход к природе.",
+      "trailerUrl": "https://vkvideo.ru/video-119011823_456240454?sh=4",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6333,
+      "_rawTitle": {
+        "ru": "Добыча с умом",
+        "en": "Smart Mining"
+      },
+      "categoryId": "science",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-050",
+      "title": {
+        "ru": "Знакомство с профессией",
+        "en": "Знакомство с профессией"
+      },
+      "category": "Научпоп",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Детский проект о геологических профессиях. Вместе с ведущими и юным исследователем мы знакомимся с геологическими профессиями, ставим опыты и узнаем, как создаются карты сокровищ Земли.",
+      "trailerUrl": "https://www.youtube.com/watch?v=aJsb0zLbxt4",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6360,
+      "_rawTitle": {
+        "ru": "Знакомство с профессией",
+        "en": "Meet the Profession"
+      },
+      "categoryId": "science",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-051",
+      "title": {
+        "ru": "Завтрак с геологом",
+        "en": "Завтрак с геологом"
+      },
+      "category": "Научпоп",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "О науке простым языком. Беседы с учеными, академиками и исследователями земли, которые делятся уникальными знаниями без сложных профессиональных терминов.",
+      "trailerUrl": "https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbG1MWmdnaWF4VXFfOS01V2puam5FZ0R6WXJod3xBQ3Jtc0trTHlVeEs5dkoyVjJiemgwRGY1UThudnZNT0lxWk80T1R5cS1DeXQ4YWQ3cG1HRFlrOFc5d3NwMmNYbVpOT1I5TjZhM2NKR3VXMWpMRHgtVllOZEVLaFAwZGVhYjVFUWF2Y2c4VTlnSXNGTGhQbWhEVQ&q=https%3A%2F%2Frutube.ru%2Fchannel%2F31024390",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8959,
+      "_rawTitle": {
+        "ru": "Завтрак с геологом",
+        "en": "Breakfast with a Geologist"
+      },
+      "categoryId": "science",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-052",
+      "title": {
+        "ru": "Счастливый возраст",
+        "en": "Счастливый возраст"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Истории людей, которые не побоялись бросить вызов возрасту и обстоятельствам. Они мечтают, воплощают идеи в жизнь и делятся своей энергией с миром.",
+      "trailerUrl": "https://youtu.be/uNf0nuw5fLQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4510,
+      "_rawTitle": {
+        "ru": "Счастливый возраст",
+        "en": "The Happy Age"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-053",
+      "title": {
+        "ru": "Время для себя. Врачи",
+        "en": "Время для себя. Врачи"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Cпециалисты помогают разобраться в ключевых аспектах самочувствия. Врачи рассказывают о внутренних дефицитах и сигналах тела, формируя у понимание, как восстановить силы без сложных схем.",
+      "trailerUrl": "https://disk.yandex.ru/i/NCcWuEAubJqOzQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4578,
+      "_rawTitle": {
+        "ru": "Время для себя. Врачи",
+        "en": "Time for Yourself. Doctors"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-054",
+      "title": {
+        "ru": "Время для себя. Гимнастика",
+        "en": "Время для себя. Гимнастика"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Короткие видеоуроки мягкой суставной гимнастики в синхронизации с дыханием для снятия напряжения и улучшения самочувствия.",
+      "trailerUrl": "https://disk.yandex.ru/i/7pNSbfTr0USZSA",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3409,
+      "_rawTitle": {
+        "ru": "Время для себя. Гимнастика",
+        "en": "Time for Yourself. Gymnastics"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-055",
+      "title": {
+        "ru": "Время для себя. Рисование",
+        "en": "Время для себя. Рисование"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Мир творчества, чтобы перезагрузить мысли и подарить внимание своему внутреннему художнику. Здесь не важен опыт или идеальный результат - только искренняя радость от процесса и полное умиротворение.",
+      "trailerUrl": "https://disk.yandex.ru/d/1LAvlAkxw2tTng",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7561,
+      "_rawTitle": {
+        "ru": "Время для себя. Рисование",
+        "en": "Time for Yourself. Drawing"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-056",
+      "title": {
+        "ru": "Время для себя. Йога",
+        "en": "Время для себя. Йога"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Серия мягких практик, созданных для людей любого возраста.Программа учит воспринимать йогу не как сложную спортивную дисциплину, а как способ бережного диалога со своим телом и внутренним миром.",
+      "trailerUrl": "https://disk.yandex.ru/i/kFjoB4nFAig8bw",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1652,
+      "_rawTitle": {
+        "ru": "Время для себя. Йога",
+        "en": "Time for Yourself. Yoga"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-057",
+      "title": {
+        "ru": "Время для себя. Психолог",
+        "en": "Время для себя. Психолог"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Цикл бесед, направленных на поддержание ментального здоровья и эмоциональной стабильности. Программа помогает справляться с жизненными трудностями без медикаментов, через работу с мышлением.",
+      "trailerUrl": "https://disk.yandex.ru/i/vzL7XeLorTDevQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8684,
+      "_rawTitle": {
+        "ru": "Время для себя. Психолог",
+        "en": "Time for Yourself. Psychologist"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-058",
+      "title": {
+        "ru": "Время для себя. Речь и голос",
+        "en": "Время для себя. Речь и голос"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Цикл передач превращает работу над дикцией в акт самопознания, позволяя обрести внутреннюю уверенность через свободное звучание собственного голоса.",
+      "trailerUrl": "https://disk.yandex.ru/i/yadyX1trMmqZ7A",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5906,
+      "_rawTitle": {
+        "ru": "Время для себя. Речь и голос",
+        "en": "Time for Yourself. Speech and Voice"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-059",
+      "title": {
+        "ru": "Время для себя. Чайная церемония",
+        "en": "Время для себя. Чайная церемония"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Медитативный практикум по поиску внутренней гармонии. Она учит зрителей превращать повседневное заваривание чая в осознанный ритуал, где каждое плавное движение помогает снять стресс и сосредоточиться на моменте. Это искусство созерцания, которое через эстетику вкуса и аромата дарит спокойствие людям, помогая замедлить ритм жизни без физических нагрузок.",
+      "trailerUrl": "https://disk.yandex.ru/i/OyMlkH6Z450Jqw",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2875,
+      "_rawTitle": {
+        "ru": "Время для себя. Чайная церемония",
+        "en": "Time for Yourself. Tea Ceremony"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-060",
+      "title": {
+        "ru": "Край Родной",
+        "en": "Край Родной"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Серия документальных фильмов об истории и культуре городов, посёлков, сёл Башкирии и других регионов (Йошкар-Ола, Елабуга, Чебоксары и многие другие)",
+      "trailerUrl": "https://youtu.be/fqRC9zBaDe0?si=bI8-1Ly_38CQmFQv",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1010,
+      "_rawTitle": {
+        "ru": "Край Родной",
+        "en": "Native Land"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-061",
+      "title": {
+        "ru": "Мастера Башкирии",
+        "en": "Мастера Башкирии"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Проект о людях дела, превративших свое ремесло в настоящее искусство.",
+      "trailerUrl": "https://youtu.be/-bOdhFJIeg4?si=LoboUgxSUfs06ROc",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5465,
+      "_rawTitle": {
+        "ru": "Мастера Башкирии",
+        "en": "Master Craftsmen of Bashkortostan"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-062",
+      "title": {
+        "ru": "Один из нас",
+        "en": "Один из нас"
+      },
+      "category": "Познавательный",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Цикл глубоких и искренних интервью с известными жителями Уфы и Башкортостана. В отличие от развлекательных ток-шоу, гостями программы становятся люди самых разных профессий. Проект фокусируется на человеческих судьбах, профессиональных вызовах и внутренней мотивации героев.",
+      "trailerUrl": "https://www.youtube.com/watch?v=4H4Fn6iRQxI&list=PLJri2ocBlVQQlBoB8REDh1sVPGR8_cEe2&index=54",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7291,
+      "_rawTitle": {
+        "ru": "Один из нас",
+        "en": "One of Us"
+      },
+      "categoryId": "educational",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-063",
+      "title": {
+        "ru": "10 минут чтобы узнать",
+        "en": "10 минут чтобы узнать"
+      },
+      "category": "Эксперты",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "10 минут монолога: как выглядит рабочий день глазами людей самых разных профессий",
+      "trailerUrl": "https://www.youtube.com/watch?v=Zyr_4HaG61c",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4968,
+      "_rawTitle": {
+        "ru": "10 минут чтобы узнать",
+        "en": "10 Minutes to Find Out"
+      },
+      "categoryId": "experts",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-064",
+      "title": {
+        "ru": "Как легче жить",
+        "en": "Как легче жить"
+      },
+      "category": "Эксперты",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Полезно жить просто! Советы экспертов для улучшения вашего здоровья и душевного равновесия.",
+      "trailerUrl": "https://www.youtube.com/watch?v=9U6RbjXQwUA",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8557,
+      "_rawTitle": {
+        "ru": "Как легче жить",
+        "en": "Making Life Easier"
+      },
+      "categoryId": "experts",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-065",
+      "title": {
+        "ru": "Программа «Психология питания»",
+        "en": "Программа «Психология питания»"
+      },
+      "category": "Эксперты",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Программа «Психология питания» — путь к стройности через работу с головой. Психолог помогает найти первопричину лишнего веса и компульсивного переедания.",
+      "trailerUrl": "https://www.youtube.com/watch?v=kY5rS6at3Ko",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5140,
+      "_rawTitle": {
+        "ru": "Программа «Психология питания»",
+        "en": "The Psychology of Eating Program"
+      },
+      "categoryId": "experts",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-066",
+      "title": {
+        "ru": "Эльбрус Нигматуллин",
+        "en": "Эльбрус Нигматуллин"
+      },
+      "category": "Эксперты",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "История успеха от самого сильного человека России Эльбруса Нигматуллина.",
+      "trailerUrl": "https://youtu.be/9cDxsLNl9I4",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7423,
+      "_rawTitle": {
+        "ru": "Эльбрус Нигматуллин",
+        "en": "Elbrus Nigmatullin"
+      },
+      "categoryId": "experts",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-067",
+      "title": {
+        "ru": "Правила этикета",
+        "en": "Правила этикета"
+      },
+      "category": "Эксперты",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Гид по уверенности в любой ситуации: от делового ужина до светского приёма. Программа учит не просто пользоваться столовыми приборами, а понимать логику социальных взаимодействий и производить безупречное впечатление без лишних усилий.",
+      "trailerUrl": "https://www.youtube.com/watch?v=OYUJKLt2B_c&t=5s",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5982,
+      "_rawTitle": {
+        "ru": "Правила этикета",
+        "en": "Rules of Etiquette"
+      },
+      "categoryId": "experts",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-068",
+      "title": {
+        "ru": "Личный психолог",
+        "en": "Личный психолог"
+      },
+      "category": "Эксперты",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Цикл интервью с ведущими специалистами в области психологии. В каждой передаче мы раскрываем наиболее актуальные и болезненные темы, отвечаем на вопросы телезрителей, помогая людям обрести эмоциональное спокойствие.",
+      "trailerUrl": "https://www.youtube.com/watch?v=K1CQR0RiJoo&t=77s",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7021,
+      "_rawTitle": {
+        "ru": "Личный психолог",
+        "en": "Personal Psychologist"
+      },
+      "categoryId": "experts",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-069",
+      "title": {
+        "ru": "Вопросы без очереди",
+        "en": "Вопросы без очереди"
+      },
+      "category": "Эксперты",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Интервью с врачами на самые актуальные темы. Доктора говорят о профилактике множества заболеваний, дают ценные советы и рекомендации.",
+      "trailerUrl": "https://www.youtube.com/watch?v=-tPBlr7rsxw&list=PLepwiRaLUZgz4hdfujlFBBe-Rh_doVhCj",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4979,
+      "_rawTitle": {
+        "ru": "Вопросы без очереди",
+        "en": "Questions Without a Queue"
+      },
+      "categoryId": "experts",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-070",
+      "title": {
+        "ru": "Перспективы",
+        "en": "Перспективы"
+      },
+      "category": "Эксперты",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Сложные темы от экономики до медицины простым языком. Разбираем вопросы, которые вы боитесь спросить.",
+      "trailerUrl": "https://youtube.com/playlist?list=PLJri2ocBlVQQRslxUS5UHErSw6-qqzl2I&si=pIyFNyZ9S_jJmhWd",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 7621,
+      "_rawTitle": {
+        "ru": "Перспективы",
+        "en": "Perspectives"
+      },
+      "categoryId": "experts",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-071",
+      "title": {
+        "ru": "На даче",
+        "en": "На даче"
+      },
+      "category": "Дача и сад",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Богатый урожай без лишних усилий. Практические советы: какие сорта выбрать,как правильно ухаживать, чем подкормить, как сделать, чтбы работа в саду была в радость.",
+      "trailerUrl": "https://www.youtube.com/watch?v=RZ2k5-zYiQU",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5012,
+      "_rawTitle": {
+        "ru": "На даче",
+        "en": "In the Garden"
+      },
+      "categoryId": "garden",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-072",
+      "title": {
+        "ru": "Forumhouse",
+        "en": "Forumhouse"
+      },
+      "category": "Дача и сад",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Весь путь от смелой идеи до готового объекта. Как построить дом мечты из того, что под рукой, без скучных типовых решений.",
+      "trailerUrl": "https://youtu.be/kfWdUSZTi2c",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6267,
+      "_rawTitle": {
+        "ru": "Forumhouse",
+        "en": "Forumhouse"
+      },
+      "categoryId": "garden",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-073",
+      "title": {
+        "ru": "Рисуем вместе",
+        "en": "Рисуем вместе"
+      },
+      "category": "Детям и подросткам",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Весёлые уроки рисования за 10 минут, где мы шаг за шагом показываем, как с помощью простого карандаша, красок и фломастеров создавать настоящие шедевры. В каждом выпуске рисуем удивительных животных, сказочных героев, красивые пейзажи и многое другое.",
+      "trailerUrl": "https://youtu.be/jtrGFa25HjA",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6210,
+      "_rawTitle": {
+        "ru": "Рисуем вместе",
+        "en": "Let's Draw Together"
+      },
+      "categoryId": "kids",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-074",
+      "title": {
+        "ru": "[Про]Трактат",
+        "en": "[Про]Трактат"
+      },
+      "category": "Детям и подросткам",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/uploads/1788760980442-br0qrj.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "ПроТрактат» — проводник в смыслах современной культуры. Это шоу, где сложные темы из мира кино, аниме и интернета становятся простыми и интересными.",
+      "trailerUrl": "https://vkvideo.ru/video-171933144_456239197",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1646,
+      "_rawTitle": {
+        "ru": "[Про]Трактат",
+        "en": "[Pro]Tractate"
+      },
+      "categoryId": "kids",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/uploads/1788760980442-br0qrj.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-075",
+      "title": {
+        "ru": "[Про]Трактат: История косплея в России",
+        "en": "[Про]Трактат: История косплея в России"
+      },
+      "category": "Детям и подросткам",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Фильм рассказывает о развитии косплея искусстве перевоплощения в персонажей из аниме, игр, комиксов и кино. Прослеживание эволюций от первых маскарадов до современной индустрии, увидим, как он пришел в Россию, и узнаем, какое будущее ждет это уникальное сообщество.",
+      "trailerUrl": "https://vkvideo.ru/video-171933144_456239195",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5496,
+      "_rawTitle": {
+        "ru": "[Про]Трактат: История косплея в России",
+        "en": "[Pro]Tractate: The History of Cosplay in Russia"
+      },
+      "categoryId": "kids",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-076",
+      "title": {
+        "ru": "[Про]Трактат: История дубляжа аниме в России",
+        "en": "[Про]Трактат: История дубляжа аниме в России"
+      },
+      "category": "Детям и подросткам",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "История о том, как аниме покорило Россию. Фильм исследует путь от фанатской озвучки до профессионального дубляжа, отвечая на вопросы, почему «Сейлор Мун» стала культурным феноменом и как энтузиасты преодолевали трудности перевода.",
+      "trailerUrl": "https://vkvideo.ru/video-171933144_456239164",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1184,
+      "_rawTitle": {
+        "ru": "[Про]Трактат: История дубляжа аниме в России",
+        "en": "[Pro]Tractate: The History of Anime Dubbing in Russia"
+      },
+      "categoryId": "kids",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-077",
+      "title": {
+        "ru": "СПЕШЛ",
+        "en": "СПЕШЛ"
+      },
+      "category": "Детям и подросткам",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "В каждом выпуске репортаж с места: косплей, стенды, активности и общение с участниками. Дополнительно ведущий выполняет тематический челлендж, проводит аниме-викторину и пробует еду, связанную с аниме-культурой.",
+      "trailerUrl": "https://vkvideo.ru/playlist/-171933144_2/video-171933144_456239135",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5987,
+      "_rawTitle": {
+        "ru": "СПЕШЛ",
+        "en": "SPECIAL"
+      },
+      "categoryId": "kids",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-078",
+      "title": {
+        "ru": "Отаку Экспресс",
+        "en": "Отаку Экспресс"
+      },
+      "category": "Детям и подросткам",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Передача о новостях, событиях и явлениях в мире аниме и поп-культуры. Динамичный обзор: свежие релизы, тренды, обсуждение отдельных тайтлов и авторов. Рассказываем, как делается аниме, режиссура, жанры вроде сай-фай, философские и культурные аспекты с акцентом на понимание контекста и сути явлений.",
+      "trailerUrl": "https://vkvideo.ru/playlist/-9273458_54756605/video-9273458_456254372",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1446,
+      "_rawTitle": {
+        "ru": "Отаку Экспресс",
+        "en": "Otaku Express"
+      },
+      "categoryId": "kids",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-079",
+      "title": {
+        "ru": "Аниме-сенсей",
+        "en": "Аниме-сенсей"
+      },
+      "category": "Детям и подросткам",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Образовательный и развлекательный проект, где педагоги разных предметов погружаются в мир японской и китайской анимации.В каждом выпуске учителя смотрят разные тайтлы и обсуждают его с точки зрения сюжета. Проект объединяет образовательный подход с популярной культурой, делая аниме доступным и интересным широкой аудитории.",
+      "trailerUrl": "https://vkvideo.ru/video-171933144_456239394?list=ln-5tsWznh2E7CW5Y5tjo",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5059,
+      "_rawTitle": {
+        "ru": "Аниме-сенсей",
+        "en": "Anime-sensei"
+      },
+      "categoryId": "kids",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-080",
+      "title": {
+        "ru": "Асана",
+        "en": "Асана"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Уроки йоги для начинающих, доступные людям любой физической подготовки.",
+      "trailerUrl": "https://www.youtube.com/watch?v=44r1OMxxgvk",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8768,
+      "_rawTitle": {
+        "ru": "Асана",
+        "en": "Asana"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-081",
+      "title": {
+        "ru": "Йога с Лялиным",
+        "en": "Йога с Лялиным"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Виталий Лялин делится секретами йоги, цигуна, медитации. Работа с внутренними энергиями и применение восточных практик для решения жизненных проблем и построения счастливой, гармоничной жизни.",
+      "trailerUrl": "https://youtu.be/xAFE9ksHg98",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8082,
+      "_rawTitle": {
+        "ru": "Йога с Лялиным",
+        "en": "Yoga with Lyalin"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-082",
+      "title": {
+        "ru": "ЛФК. 1 сезон",
+        "en": "ЛФК. 1 сезон"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Лечебная физкультура в домашних условиях. Грамотно подобранные комплексы упражнений оказывают оздоровительное воздействие на внутренние органы, укрепляют мышцы и суставы, способствуя улучшению самочувствия.",
+      "trailerUrl": "https://youtu.be/hZx6jkitHF8",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5846,
+      "_rawTitle": {
+        "ru": "ЛФК. 1 сезон",
+        "en": "Therapeutic Exercise. Season 1"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-083",
+      "title": {
+        "ru": "ЛФК. 2 сезон",
+        "en": "ЛФК. 2 сезон"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Лечебная физкультура для занятий дома. Тренировки ускоряют обмен веществ, улучшают кровообращение и помогают укрепить организм, оказывая мягкое воздействие на все его системы.",
+      "trailerUrl": "https://disk.yandex.ru/i/mFPwvrFm8h-gXg",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2397,
+      "_rawTitle": {
+        "ru": "ЛФК. 2 сезон",
+        "en": "Therapeutic Exercise. Season 2"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-084",
+      "title": {
+        "ru": "ЛФК. 3 сезон",
+        "en": "ЛФК. 3 сезон"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "ЛФК, не выходя из дома. Специализированные упражнения способствуют улучшению кровотока, ускоряют метаболизм и закаляют тело, оказывая положительный эффект на суставы и мышцы.",
+      "trailerUrl": "https://disk.yandex.ru/i/Pxkt4LdF429qvw",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1346,
+      "_rawTitle": {
+        "ru": "ЛФК. 3 сезон",
+        "en": "Therapeutic Exercise. Season 3"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-085",
+      "title": {
+        "ru": "Дыхательная гимнастика. 1 сезон",
+        "en": "Дыхательная гимнастика. 1 сезон"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Специализированный цикл уроков, посвященный управлению самым важным ресурсом человека — его дыханием. Ведущая программы, инструктор ЛФК Татьяна Новикова, учит зрителей использовать дыхание как инструмент оздоровления.",
+      "trailerUrl": "https://youtu.be/CSURjF57VD0",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8344,
+      "_rawTitle": {
+        "ru": "Дыхательная гимнастика. 1 сезон",
+        "en": "Breathing Exercises. Season 1"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-086",
+      "title": {
+        "ru": "Дыхательная гимнастика. 2 сезон",
+        "en": "Дыхательная гимнастика. 2 сезон"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Цикл практических уроков, посвященных восстановлению и укреплению здоровья через управление дыханием. Ведущая программы — инструктор ЛФК Татьяна Новикова, делится методиками, применяемыми в медицинской реабилитации.",
+      "trailerUrl": "https://disk.yandex.ru/i/TF0cILzBgcPUwA",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1901,
+      "_rawTitle": {
+        "ru": "Дыхательная гимнастика. 2 сезон",
+        "en": "Breathing Exercises. Season 2"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-087",
+      "title": {
+        "ru": "Заряд бодрости",
+        "en": "Заряд бодрости"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "За 15 минут активируем килотонны «спящей» внутри себя энергии вместе с лучшими тренерами.",
+      "trailerUrl": "https://www.youtube.com/watch?v=TS4pNrCyj_8",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1850,
+      "_rawTitle": {
+        "ru": "Заряд бодрости",
+        "en": "Energy Boost"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-088",
+      "title": {
+        "ru": "Пилатес с Еленой Газизовой",
+        "en": "Пилатес с Еленой Газизовой"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Откройте для себя силу и гибкость своего тела. Елена Газизова проведет вас через комплекс упражнений, направленных на укрепление мышц кора, улучшение осанки и обретение гармонии.",
+      "trailerUrl": "https://youtu.be/XaQJPjwPIeE",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 5533,
+      "_rawTitle": {
+        "ru": "Пилатес с Еленой Газизовой",
+        "en": "Pilates with Elena Gazizova"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-089",
+      "title": {
+        "ru": "Ваш реабилитолог",
+        "en": "Ваш реабилитолог"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Программа создана для тех, кто хочет сохранить свободу движений и бодрость в любом возрасте. Под руководством врача-реабилитолога Ларисы Идрисовой зрители выполняют уникальный комплекс упражнений, направленный на восстановление функций опорно-двигательного аппарата прямо у экранов телевизоров.",
+      "trailerUrl": "https://youtu.be/_jWOsyNm2bE",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1785,
+      "_rawTitle": {
+        "ru": "Ваш реабилитолог",
+        "en": "Your Rehabilitation Therapist"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-090",
+      "title": {
+        "ru": "Линия тела",
+        "en": "Линия тела"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Программа посвященна вашей осанке. Красивая походка, здоровая спина и легкость в каждом движении — работаем над собой вместе.",
+      "trailerUrl": "https://disk.yandex.ru/i/F3mYqeceY3mbRA",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6112,
+      "_rawTitle": {
+        "ru": "Линия тела",
+        "en": "Body Line"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-091",
+      "title": {
+        "ru": "Аэробика",
+        "en": "Аэробика"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Занятия направлены на бережную тренировку дыхательной и сердечно-сосудистой систем, а также на развитие когнитивных функций через разучивание связок. Танцевальный формат позволяет поддерживать высокий эмоциональный тонус, превращая работу над выносливостью в увлекательный процесс самопознания и заботы о теле.",
+      "trailerUrl": "https://youtu.be/YddZy_A0ImU",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4888,
+      "_rawTitle": {
+        "ru": "Аэробика",
+        "en": "Aerobics"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-092",
+      "title": {
+        "ru": "Скандинавская ходьба",
+        "en": "Скандинавская ходьба"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Скандинавская ходьба — это лучший способ восстановиться после травм и укрепить сердечно-сосудистую систему. Она исправляет осанку, снимает напряжение со спины и плеч, возвращая телу лёгкость. Проект помогает освоить технику северной ходьбы.",
+      "trailerUrl": "https://youtu.be/o8jGDxQ0sqQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1611,
+      "_rawTitle": {
+        "ru": "Скандинавская ходьба",
+        "en": "Nordic Walking"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-093",
+      "title": {
+        "ru": "Скандинавская ходьба 2.0",
+        "en": "Скандинавская ходьба 2.0"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Скандинавская ходьба — это мягкая нагрузка, которая помогает восстановиться после травм и встать на ноги после тяжёлых заболеваний. Специальные палки снимают напряжение со спины и коленей, позволяя двигаться без боли.",
+      "trailerUrl": "https://youtu.be/o8jGDxQ0sqQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3939,
+      "_rawTitle": {
+        "ru": "Скандинавская ходьба 2.0",
+        "en": "Nordic Walking 2.0"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-094",
+      "title": {
+        "ru": "Релакс практика",
+        "en": "Релакс практика"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Физическая активность полезна для мышц и суставов. А что, если ее можно сделать более осознанной? Представьте, что ваши движения идут через образы, а к мечте вы идете через движения.",
+      "trailerUrl": "https://youtu.be/az9zJOvAQX4",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1689,
+      "_rawTitle": {
+        "ru": "Релакс практика",
+        "en": "Relaxation Practice"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-095",
+      "title": {
+        "ru": "Релакс тренировки",
+        "en": "Релакс тренировки"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Бережная телесная практика, созданная для глубокого освобождения от накопленного напряжения и возвращения к состоянию внутренней тишины. Под руководством опытного наставника участники погружаются в медитативный ритм движений, который позволяет отпустить негативные эмоции и снять мышечные спазмы, сковывающие тело.",
+      "trailerUrl": "https://youtu.be/hhCzr12y-10",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 3732,
+      "_rawTitle": {
+        "ru": "Релакс тренировки",
+        "en": "Relaxation Workouts"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-096",
+      "title": {
+        "ru": "Афродэнс",
+        "en": "Афродэнс"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Настоящее танцевальное путешествие в мир первобытных ритмов и безудержной радости. Погружаясь в зажигательные мелодии Африки и Латинской Америки, участники отпускают контроль и позволяют телу двигаться интуитивно под звуки барабанов.",
+      "trailerUrl": "https://youtu.be/ZdOUWbmeEBs",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4010,
+      "_rawTitle": {
+        "ru": "Афродэнс",
+        "en": "AfroDance"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-097",
+      "title": {
+        "ru": "Зумба",
+        "en": "Зумба"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Танцевальная фитнес-вечеринка, основанная на зажигательных латиноамериканских ритмах. Под руководством лицензированных инструкторов зрители разучивают простые, но энергичные движения в стиле меренге, сальсы и реггетона.",
+      "trailerUrl": "https://youtu.be/HOft6A1Au5I",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8745,
+      "_rawTitle": {
+        "ru": "Зумба",
+        "en": "Zumba"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-098",
+      "title": {
+        "ru": "Нейрогимнастика",
+        "en": "Нейрогимнастика"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Специализированный комплекс упражнений, объединяющий физическую активность с интенсивной работой мозга. Программа разработана для поддержания когнитивного здоровья и ясности ума в любом возрасте.",
+      "trailerUrl": "https://youtu.be/gtkI5F_1dJU",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 8258,
+      "_rawTitle": {
+        "ru": "Нейрогимнастика",
+        "en": "Neurogymnastics"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-099",
+      "title": {
+        "ru": "Тренируем память",
+        "en": "Тренируем память"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Практическое руководство по сохранению и развитию когнитивных способностей для людей старшего возраста. Программа посвящена доказанному факту: мозг, как и мышцы, поддается тренировке в любом возрасте.",
+      "trailerUrl": "https://youtu.be/4JX0tsE-EPo",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2862,
+      "_rawTitle": {
+        "ru": "Тренируем память",
+        "en": "Training Your Memory"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-100",
+      "title": {
+        "ru": "Гимнастика для глаз",
+        "en": "Гимнастика для глаз"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Выпуски гимнастика для глаз, которые помогают восстановить тонус мышц и являются профилактикой развития офтальмологических заболеваний.",
+      "trailerUrl": "https://vk.com/video-172055105_456239267",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6667,
+      "_rawTitle": {
+        "ru": "Гимнастика для глаз",
+        "en": "Eye Exercises"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-101",
+      "title": {
+        "ru": "Сила духа",
+        "en": "Сила духа"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Занятия ушу и цигун называют практикой возвращения к себе: ведь постепенно осваивая движения, вы учитесь осознанно управлять телом, дышать и мыслить. Восточные практики привлекательны эффективностью и необычным подходом к работе с телом и разумом.",
+      "trailerUrl": "https://youtu.be/nDiXvZp9okI",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4063,
+      "_rawTitle": {
+        "ru": "Сила духа",
+        "en": "Strength of Spirit"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-102",
+      "title": {
+        "ru": "Держим форму. 1 сезон",
+        "en": "Держим форму. 1 сезон"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Гид в мире здорового образа жизни. В каждом выпуске ведущая делится простыми, но эффективными советами по выполенинию тренировок и уходу за собой.",
+      "trailerUrl": "https://youtu.be/TRqTfBID2vg",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 1105,
+      "_rawTitle": {
+        "ru": "Держим форму. 1 сезон",
+        "en": "Staying in Shape. Season 1"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-103",
+      "title": {
+        "ru": "Держим форму. 2 сезон",
+        "en": "Держим форму. 2 сезон"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Готовые упражнения для любого возраста. Подвижность тела, мобильность и тонус мышц, тренировки на свежем воздухе с сопровождением фитнес-тренера.",
+      "trailerUrl": "https://youtu.be/TRqTfBID2vg",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2216,
+      "_rawTitle": {
+        "ru": "Держим форму. 2 сезон",
+        "en": "Staying in Shape. Season 2"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-104",
+      "title": {
+        "ru": "Активное долголетие",
+        "en": "Активное долголетие"
+      },
+      "category": "Тренировки",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Бодрые тренировки с кардио нагрузкой, элементами силовых упражнений и легкого стрейчинга.",
+      "trailerUrl": "https://youtu.be/snoGq781deQ",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 4616,
+      "_rawTitle": {
+        "ru": "Активное долголетие",
+        "en": "Active Longevity"
+      },
+      "categoryId": "workout",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-105",
+      "title": {
+        "ru": "Глазами Геолога",
+        "en": "Глазами Геолога"
+      },
+      "category": "Под запрос",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "О геологии максимально доступно и просто",
+      "trailerUrl": "https://www.youtube.com/watch?v=W08Fr8DrSUg",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 2397,
+      "_rawTitle": {
+        "ru": "Глазами Геолога",
+        "en": "Through a Geologist's Eyes"
+      },
+      "categoryId": "on-demand",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    },
+    {
+      "id": "mv-106",
+      "title": {
+        "ru": "Викторины",
+        "en": "Викторины"
+      },
+      "category": "Под запрос",
+      "quality": [
+        "Full HD"
+      ],
+      "duration": "30 мин",
+      "status": "Опубликован",
+      "poster": "/placeholder.png",
+      "tags": [],
+      "stills": [],
+      "year": 2024,
+      "description": "Каждый выпуск — это увлекательная викторина, где зрители могут проверить свои знания в различных областях, от географии и истории до культуры и науки.",
+      "trailerUrl": "https://disk.yandex.ru/d/DRQcFh-jbmvevA",
+      "country": "Россия",
+      "ageRating": "12+",
+      "audioLang": "Русский",
+      "territory": "Весь мир",
+      "rightsPeriod": "До 31.12.2028",
+      "views": 6739,
+      "_rawTitle": {
+        "ru": "Викторины",
+        "en": "Quizzes"
+      },
+      "categoryId": "on-demand",
+      "episodeDuration": {
+        "min": 30,
+        "max": 30
+      },
+      "countries": [
+        "Россия"
+      ],
+      "languages": [
+        "Русский"
+      ],
+      "image": "/placeholder.png",
+      "qualities": [
+        "Full HD"
+      ]
+    }
+  ]
+}
