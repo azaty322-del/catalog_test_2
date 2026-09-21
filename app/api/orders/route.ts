@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import { notifyNewOrder, OrderData } from '@/lib/notifications';
+import { logger } from '@/lib/logger';
 
 const ORDERS_FILE = path.join(process.cwd(), 'data', 'orders.json');
 
@@ -69,9 +70,16 @@ export async function POST(req: NextRequest) {
       console.error('Ошибка отправки уведомления:', err);
     });
 
+    logger.info('ORDER_CREATED', {
+      orderId: newOrder.id,
+      email: newOrder.email,
+      fullName: newOrder.fullName,
+      totalCount: newOrder.totalCount,
+    });
+
     return NextResponse.json({ ok: true, order: newOrder }, { status: 201 });
   } catch (error: any) {
-    console.error('Ошибка создания заказа:', error);
+    logger.error('ORDER_CREATION_FAILED', { error: error.message });
     return NextResponse.json({ error: error.message || 'Внутренняя ошибка сервера' }, { status: 500 });
   }
 }
@@ -95,9 +103,11 @@ export async function PATCH(req: NextRequest) {
     targetOrder.status = status;
     writeOrders(orders);
 
+    logger.info('ORDER_STATUS_CHANGED', { orderId, status });
+
     return NextResponse.json({ ok: true, order: targetOrder });
   } catch (error: any) {
-    console.error('Ошибка обновления статуса заказа:', error);
+    logger.error('ORDER_STATUS_UPDATE_FAILED', { error: error.message });
     return NextResponse.json({ error: error.message || 'Внутренняя ошибка сервера' }, { status: 500 });
   }
 }

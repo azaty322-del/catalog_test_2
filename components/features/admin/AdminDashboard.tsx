@@ -14,9 +14,16 @@ import {
   Trash2,
   ArrowLeft,
   X,
+  FileText,
+  Download,
+  Upload,
+  Shield,
+  RefreshCw,
+  Eye,
+  AlertCircle,
 } from 'lucide-react';
 
-type Tab = 'dashboard' | 'categories' | 'movies' | 'orders' | 'users' | 'settings';
+type Tab = 'dashboard' | 'categories' | 'movies' | 'orders' | 'users' | 'settings' | 'logs';
 
 interface MovieItem {
   id: string;
@@ -90,6 +97,7 @@ const NAV_ITEMS = [
   { id: 'movies', label: 'Фильмы', icon: Film },
   { id: 'categories', label: 'Категории', icon: Folder },
   { id: 'orders', label: 'Заказы', icon: ShoppingCart },
+  { id: 'logs', label: 'Логи и Аудит', icon: FileText },
   { id: 'users', label: 'Пользователи', icon: Users },
   { id: 'settings', label: 'Настройки', icon: Settings },
 ];
@@ -105,15 +113,80 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [orders, setOrders] = useState<any[]>([]);
   const [_ordersLoading, setOrdersLoading] = useState(false);
+  const [logs, setLogs] = useState<any[]>([]);
+  const [logsLoading, setLogsLoading] = useState(false);
+  const [logLevelFilter, setLogLevelFilter] = useState('ALL');
+  const [logSearch, setLogSearch] = useState('');
+  const [excelImportLoading, setExcelImportLoading] = useState(false);
+  const [selectedLogDetails, setSelectedLogDetails] = useState<any | null>(null);
   const [settings, setSettings] = useState({
     siteName: 'Каталог контента UTV Media',
     adminEmail: 'admin@utvmedia.ru',
     telegramBotToken: '',
     telegramChatId: '',
     notificationEmails: 'orders@utv.ru',
+    consoleNoise: true,
   });
   const [settingsSaved, setSettingsSaved] = useState(false);
   const [telegramStatus, setTelegramStatus] = useState<string | null>(null);
+
+  const loadLogs = async () => {
+    try {
+      setLogsLoading(true);
+      const params = new URLSearchParams();
+      if (logLevelFilter !== 'ALL') params.append('level', logLevelFilter);
+      if (logSearch) params.append('search', logSearch);
+      const res = await fetch(`/api/admin/logs?${params.toString()}`);
+      if (res.ok) {
+        const data = await res.json();
+        setLogs(data.logs || []);
+      }
+    } catch (e) {
+      console.error('Ошибка загрузки логов:', e);
+    } finally {
+      setLogsLoading(false);
+    }
+  };
+
+  const clearLogs = async () => {
+    if (!confirm('Вы действительно хотите очистить журнал аудита?')) return;
+    try {
+      const res = await fetch('/api/admin/logs', { method: 'DELETE' });
+      if (res.ok) {
+        setLogs([]);
+      }
+    } catch (e) {
+      console.error('Ошибка очистки логов:', e);
+    }
+  };
+
+  const handleExportExcel = () => {
+    window.open('/api/admin/excel', '_blank');
+  };
+
+  const handleImportExcel = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setExcelImportLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const res = await fetch('/api/admin/excel', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (res.ok) {
+        alert(`Каталог успешно обновлен из Excel! Обработано позиций: ${data.importedCount}`);
+        loadMovies();
+        loadLogs();
+      } else {
+        alert(data.error || 'Ошибка импорта Excel');
+      }
+    } catch (err: any) {
+      alert('Ошибка загрузки файла: ' + err.message);
+    } finally {
+      setExcelImportLoading(false);
+      e.target.value = '';
+    }
+  };
 
   const loadSettings = async () => {
     try {
@@ -253,7 +326,14 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
     loadMovies();
     loadOrders();
     loadSettings();
+    loadLogs();
   }, []);
+
+  useEffect(() => {
+    if (tab === 'logs') {
+      loadLogs();
+    }
+  }, [tab, logLevelFilter]);
 
   const saveMovies = async (updatedList: MovieItem[]) => {
     setMovies(updatedList);
@@ -605,13 +685,40 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
                     {selectedCategory ? `Категория: ${selectedCategory}` : 'Все фильмы'}
                   </h2>
                 </div>
-                <button
-                  onClick={handleStartCreate}
-                  className="px-5 py-2.5 bg-[#ff5a1f] text-white text-xs font-semibold rounded-xl hover:bg-[#e04810] shadow-md shadow-orange-500/20 flex items-center gap-1.5"
-                >
-                  <Plus size={15} />
-                  <span>Добавить фильм</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleExportExcel}
+                    className="px-3.5 py-2.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold rounded-xl hover:bg-emerald-100 transition-colors flex items-center gap-1.5"
+                    title="Скачать весь каталог в виде Excel таблицы (.xlsx)"
+                  >
+                    <Download size={14} />
+                    <span>Экспорт Excel</span>
+                  </button>
+
+                  <label
+                    className="px-3.5 py-2.5 bg-sky-50 text-sky-700 border border-sky-200 text-xs font-semibold rounded-xl hover:bg-sky-100 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    title="Загрузить обновленный Excel каталог"
+                  >
+                    <Upload size={14} />
+                    <span>{excelImportLoading ? 'Импорт...' : 'Импорт Excel'}</span>
+                    <input
+                      type="file"
+                      accept=".xlsx,.xls"
+                      onChange={handleImportExcel}
+                      disabled={excelImportLoading}
+                      className="hidden"
+                    />
+                  </label>
+
+                  <button
+                    onClick={handleStartCreate}
+                    className="px-4 py-2.5 bg-[#ff5a1f] text-white text-xs font-semibold rounded-xl hover:bg-[#e04810] shadow-md shadow-orange-500/20 flex items-center gap-1.5"
+                  >
+                    <Plus size={15} />
+                    <span>Добавить фильм</span>
+                  </button>
+                </div>
               </div>
 
               <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between gap-4">
@@ -1050,6 +1157,140 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
             </div>
           )}
 
+          {/* 5. ЛОГИ И АУДИТ БЕЗОПАСНОСТИ */}
+          {!isEditing && tab === 'logs' && (
+            <div className="space-y-6">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <Shield size={20} className="text-[#ff5a1f]" />
+                    Журнал аудита и логирования
+                  </h2>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Фиксация действий администраторов, входов, заказов и изменений каталога
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={loadLogs}
+                    className="px-3.5 py-2 bg-white border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl hover:bg-slate-50 flex items-center gap-1.5 transition-colors"
+                  >
+                    <RefreshCw size={13} className={logsLoading ? 'animate-spin' : ''} />
+                    <span>Обновить</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={clearLogs}
+                    className="px-3.5 py-2 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold rounded-xl hover:bg-rose-100 flex items-center gap-1.5 transition-colors"
+                  >
+                    <Trash2 size={13} />
+                    <span>Очистить журнал</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Фильтры и поиск логов */}
+              <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  {(['ALL', 'INFO', 'SECURITY', 'WARN', 'ERROR'] as const).map((lvl) => (
+                    <button
+                      key={lvl}
+                      type="button"
+                      onClick={() => setLogLevelFilter(lvl)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                        logLevelFilter === lvl
+                          ? 'bg-[#11131e] text-white'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      }`}
+                    >
+                      {lvl === 'ALL' ? 'Все уровни' : lvl === 'SECURITY' ? 'Безопасность' : lvl}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  <input
+                    type="text"
+                    placeholder="Поиск по действию, email или деталям..."
+                    value={logSearch}
+                    onChange={(e) => setLogSearch(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && loadLogs()}
+                    className="px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#ff5a1f] w-64"
+                  />
+                  <button
+                    type="button"
+                    onClick={loadLogs}
+                    className="px-3 py-1.5 bg-[#ff5a1f] text-white text-xs font-semibold rounded-xl hover:bg-[#e04810]"
+                  >
+                    Найти
+                  </button>
+                </div>
+              </div>
+
+              {/* Таблица записей журнала */}
+              <div className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm">
+                {logs.length === 0 ? (
+                  <div className="p-12 text-center text-slate-400 text-xs">
+                    {logsLoading ? 'Загрузка журнала...' : 'В журнале аудита пока нет записей.'}
+                  </div>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse text-xs">
+                      <thead>
+                        <tr className="bg-slate-50 border-b border-slate-100 text-slate-500 font-semibold uppercase text-[10px] tracking-wider">
+                          <th className="py-3 px-4">Время</th>
+                          <th className="py-3 px-3">Уровень</th>
+                          <th className="py-3 px-4">Действие</th>
+                          <th className="py-3 px-4">Инициатор / IP</th>
+                          <th className="py-3 px-4">Детали события</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {logs.map((log, idx) => (
+                          <tr key={log.id || idx} className="hover:bg-slate-50/80 transition-colors">
+                            <td className="py-3 px-4 whitespace-nowrap text-slate-500 font-mono text-[11px]">
+                              {new Date(log.timestamp).toLocaleString('ru-RU')}
+                            </td>
+                            <td className="py-3 px-3 whitespace-nowrap">
+                              <span
+                                className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                                  log.level === 'SECURITY'
+                                    ? 'bg-purple-100 text-purple-700'
+                                    : log.level === 'ERROR'
+                                    ? 'bg-rose-100 text-rose-700'
+                                    : log.level === 'WARN'
+                                    ? 'bg-amber-100 text-amber-700'
+                                    : 'bg-sky-100 text-sky-700'
+                                }`}
+                              >
+                                {log.level}
+                              </span>
+                            </td>
+                            <td className="py-3 px-4 font-bold text-slate-800 font-mono text-[11px]">
+                              {log.action}
+                            </td>
+                            <td className="py-3 px-4 text-slate-600">
+                              <div className="font-semibold text-slate-900">{log.actor || 'SYSTEM'}</div>
+                              {log.ip && <div className="text-[10px] text-slate-400 font-mono">{log.ip}</div>}
+                            </td>
+                            <td className="py-3 px-4 text-slate-600 max-w-md">
+                              <pre className="text-[11px] font-mono bg-slate-50 p-1.5 rounded-lg border border-slate-200/60 overflow-x-auto whitespace-pre-wrap break-all">
+                                {typeof log.details === 'object'
+                                  ? JSON.stringify(log.details, null, 2)
+                                  : log.details || '—'}
+                              </pre>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* 6. УПРАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯМИ */}
           {!isEditing && tab === 'users' && (
             <div className="bg-white rounded-2xl border border-slate-200/80 p-12 text-center shadow-sm">
@@ -1163,6 +1404,35 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
                       onChange={(e) => setSettings({ ...settings, notificationEmails: e.target.value })}
                       className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:border-[#ff5a1f] focus:bg-white outline-none"
                     />
+                  </div>
+                </div>
+
+                {/* Безопасность и Консольный шум */}
+                <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 md:col-span-2">
+                  <div className="flex items-center justify-between border-b pb-3">
+                    <h3 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                      <Shield size={16} className="text-[#ff5a1f]" />
+                      Безопасность логов и консольный шум
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <div className="max-w-xl">
+                      <h4 className="text-xs font-bold text-slate-900">Консольный шум безопасности (Console Noise)</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">
+                        Генерирует фоновые энтропийные события в консоли сервера и маскирует реальные действия администратора,
+                        защищая логи от перехвата и автоматизированного анализа ботами.
+                      </p>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={Boolean(settings.consoleNoise)}
+                        onChange={(e) => setSettings({ ...settings, consoleNoise: e.target.checked })}
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#ff5a1f]"></div>
+                    </label>
                   </div>
                 </div>
               </div>

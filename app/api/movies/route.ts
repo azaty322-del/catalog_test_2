@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import { getAllMovies } from '@/lib/catalog';
+import { logger } from '@/lib/logger';
 
 const dataFilePath = path.join(process.cwd(), 'data', 'data.json');
 
@@ -114,8 +115,10 @@ export async function POST(req: Request) {
     }
 
     fs.writeFileSync(dataFilePath, JSON.stringify(outputData, null, 2), 'utf-8');
+    logger.info('MOVIE_CATALOG_UPDATED', { count: updatedList.length });
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (error: any) {
+    logger.error('MOVIE_CATALOG_UPDATE_ERROR', { error: error?.message });
     return NextResponse.json({ error: 'Ошибка сохранения базы' }, { status: 500 });
   }
 }

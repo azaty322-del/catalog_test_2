@@ -1,15 +1,32 @@
-import data from '@/data/data.json';
+import fs from 'fs';
+import path from 'path';
+import fallbackData from '@/data/data.json';
 import { Movie, Category } from '@/types/catalog';
 import { filterMovies, getCategorySlug, CATEGORY_MAP, CatalogFilterParams } from './filters';
 
 export { getCategorySlug, CATEGORY_MAP };
 
-export function getAllMovies(): Movie[] {
-  const rawList = Array.isArray((data as any).movies)
-    ? (data as any).movies
-    : Array.isArray(data)
-    ? data
+function getRawMovies(): any[] {
+  try {
+    const dataFilePath = path.join(process.cwd(), 'data', 'data.json');
+    if (fs.existsSync(dataFilePath)) {
+      const content = fs.readFileSync(dataFilePath, 'utf-8');
+      const parsed = JSON.parse(content);
+      return Array.isArray(parsed) ? parsed : (parsed.movies || parsed.items || []);
+    }
+  } catch {
+    // fallback к статическому кэшу при ошибке файловой системы
+  }
+
+  return Array.isArray((fallbackData as any).movies)
+    ? (fallbackData as any).movies
+    : Array.isArray(fallbackData)
+    ? fallbackData
     : [];
+}
+
+export function getAllMovies(): Movie[] {
+  const rawList = getRawMovies();
 
   return rawList.map((m: any, idx: number) => {
     const rawCat = m.category || m.categoryId || 'Природа';

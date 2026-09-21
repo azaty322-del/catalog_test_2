@@ -1,0 +1,108 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Каталог контента (Фильмы и передачи)
+model Movie {
+  id                   String   @id @default(cuid())
+  slug                 String   @unique
+  titleRu              String
+  titleEn              String
+  descriptionRu        String   @default("")
+  descriptionEn        String   @default("")
+  category             String
+  categorySlug         String
+  year                 Int      @default(2024)
+  quality              String   @default("Full HD")
+  qualities            String[] @default(["Full HD"])
+  duration             String   @default("30 мин")
+  totalDurationMinutes Int      @default(30)
+  status               String   @default("Опубликован")
+  poster               String   @default("")
+  trailerUrl           String   @default("")
+  stills               String[] @default([])
+  tags                 String[] @default([])
+  country              String   @default("Россия")
+  countries            String[] @default(["Россия"])
+  ageRating            String   @default("12+")
+  languages            String[] @default(["Русский"])
+  territory            String   @default("Весь мир")
+  rightsPeriod         String   @default("До 31.12.2028")
+  views                Int      @default(0)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@index([categorySlug])
+  @@index([status])
+}
+
+// Пользователи платформы (Гости, Пользователи, Администраторы)
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // Захешированный пароль PBKDF2
+  fullName  String
+  role      String   @default("USER") // ADMIN или USER
+  company   String?
+  position  String?
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Заявки / Заказы контента из корзины
+model Order {
+  id         String      @id // ORD-XXXXXX
+  fullName   String
+  email      String
+  phone      String
+  company    String?
+  status     String      @default("new") // new, processing, completed, cancelled
+  totalCount Int         @default(1)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  items      OrderItem[]
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+// Позиции в заказе
+model OrderItem {
+  id                   String   @id @default(cuid())
+  orderId              String
+  order                Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  movieId              String
+  title                String
+  poster               String?
+  category             String?
+  qualities            String[] @default([])
+  totalDurationMinutes Int?
+}
+
+// Журнал аудита и логирования безопасности
+model AuditLog {
+  id        String   @id @default(cuid())
+  timestamp DateTime @default(now())
+  level     String   @default("INFO") // INFO, WARN, ERROR, SECURITY
+  action    String   // MOVIE_UPDATE, LOGIN, ORDER_CREATE, EXCEL_IMPORT, etc.
+  actor     String?  // Email пользователя, IP или SYSTEM
+  details   String?  // JSON-текст с подробностями
+  ip        String?
+
+  @@index([level])
+  @@index([action])
+  @@index([timestamp])
+}
+
+// Системные настройки сайта
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}

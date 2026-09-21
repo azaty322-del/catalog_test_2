@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
+import { mkdir, writeFile } from 'fs/promises';
 import path from 'path';
+import { logger } from '@/lib/logger';
+
+const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'];
 
 export async function POST(request: Request) {
   try {
@@ -11,20 +14,33 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Файл не найден' }, { status: 400 });
     }
 
+    const ext = path.extname(file.name).toLowerCase() || '.jpg';
+    if (!ALLOWED_EXTENSIONS.includes(ext)) {
+      return NextResponse.json({ error: 'Недопустимый формат файла. Разрешены только изображения.' }, { status: 400 });
+    }
+
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Генерируем уникальное имя файла с сохранением оригинального расширения
-    const ext = path.extname(file.name) || '.jpg';
+    // Гарантируем существование директории на сервере
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    await mkdir(uploadDir, { recursive: true });
+
+    // Генерируем уникальное имя файла
     const filename = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}${ext}`;
-    const filePath = path.join(process.cwd(), 'public', 'uploads', filename);
+    const filePath = path.join(uploadDir, filename);
 
     await writeFile(filePath, buffer);
 
-    // Возвращаем прямую ссылку на оригинальный файл
-    return NextResponse.json({ url: `/uploads/${filename}` });
-  } catch (error) {
-    console.error('Upload error:', error);
-    return NextResponse.json({ error: 'Ошибка сохранения файла' }, { status: 500 });
+    logger.info('IMAGE_UPLOAD_SUCCESS', { filename, size: buffer.length });
+
+    // Возвращаем прямую ссылку
+    return NextResponse.json({
+      url: `/uploads/${filename}`,
+      fallbackUrl: `/api/uploads/${filename}`,
+    });
+  } catch (error: any) {
+    logger.error('IMAGE_UPLOAD_ERROR', { error: error.message });
+    return NextResponse.json({ error: 'Ошибка сохранения файла: ' + error.message }, { status: 500 });
   }
 }

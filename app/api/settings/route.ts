@@ -4,7 +4,7 @@ import path from 'path';
 
 const SETTINGS_FILE = path.join(process.cwd(), 'data', 'settings.json');
 
-export interface AppSettings {
+interface AppSettings {
   siteName: string;
   adminEmail: string;
   telegramBotToken: string;
@@ -12,7 +12,7 @@ export interface AppSettings {
   notificationEmails: string;
 }
 
-export function readSettings(): AppSettings {
+function readSettings(): AppSettings {
   const defaults: AppSettings = {
     siteName: 'Каталог контента UTV Media',
     adminEmail: process.env.ADMIN_NOTIFICATION_EMAIL || process.env.ADMIN_EMAIL || 'admin@utvmedia.ru',
@@ -34,7 +34,7 @@ export function readSettings(): AppSettings {
   }
 }
 
-export function writeSettings(settings: AppSettings): void {
+function writeSettings(settings: AppSettings): void {
   try {
     fs.writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2), 'utf-8');
   } catch (error) {

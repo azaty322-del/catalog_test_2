@@ -6,6 +6,7 @@ import {
   SESSION_COOKIE_NAME,
 } from '@/lib/auth/server';
 import type { User } from '@/lib/auth/types';
+import { logger } from '@/lib/logger';
 
 export async function POST(req: NextRequest) {
   try {
@@ -63,8 +64,11 @@ export async function POST(req: NextRequest) {
     }
 
     if (!matchedUser) {
+      logger.security('AUTH_LOGIN_FAILED', { email: cleanEmail });
       return NextResponse.json({ ok: false, reason: 'invalid_credentials' }, { status: 401 });
     }
+
+    logger.info('AUTH_LOGIN_SUCCESS', { email: cleanEmail, role: matchedUser.role });
 
     const token = createSessionToken(matchedUser);
     const res = NextResponse.json({ ok: true, user: matchedUser });
