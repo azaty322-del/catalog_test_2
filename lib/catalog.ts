@@ -3,6 +3,7 @@ import path from 'path';
 import fallbackData from '@/data/data.json';
 import { Movie, Category } from '@/types/catalog';
 import { filterMovies, getCategorySlug, CATEGORY_MAP, CatalogFilterParams } from './filters';
+import { prisma, isDatabaseConfigured } from './prisma';
 
 export { getCategorySlug, CATEGORY_MAP };
 
@@ -33,7 +34,8 @@ export function getAllMovies(): Movie[] {
     return {
       ...m,
       id: String(m.id || idx + 1),
-      slug: m.slug || `movie-${m.id || idx + 1}`,
+      catalogId: m.catalogId || undefined,
+      slug: m.slug || `title-${m.catalogId ? m.catalogId.toLowerCase() : idx + 1}`,
       title: {
         ru: typeof m.title === 'object' ? (m.title.ru || m.title.en || 'Без названия') : (m.title || 'Без названия'),
         en: (m._rawTitle && m._rawTitle.en)
@@ -49,29 +51,35 @@ export function getAllMovies(): Movie[] {
       categorySlug: getCategorySlug(rawCat),
       poster: m.poster || m.image || '/placeholder.png',
       year: Number(m.year || m.yearFrom) || 2024,
+      yearRange: m.yearRange || String(m.year || 2024),
+      author: m.author || '',
       quality: Array.isArray(m.qualities)
         ? m.qualities[0]
         : Array.isArray(m.quality)
         ? m.quality[0]
-        : m.quality || 'Full HD',
+        : m.quality || 'HD / 4K',
       qualities: Array.isArray(m.qualities)
         ? m.qualities
         : m.quality
-        ? [m.quality]
-        : ['Full HD'],
+        ? (Array.isArray(m.quality) ? m.quality : [m.quality])
+        : ['HD', '4K'],
+      episodes: Number(m.episodesCount || m.episodes) || 1,
+      episodesCount: Number(m.episodesCount || m.episodes) || 1,
+      episodeDuration: m.episodeDuration || { min: 30, max: 30 },
       duration:
         typeof m.duration === 'string'
           ? m.duration
           : `${m.episodeDuration?.max || 30} мин`,
+      totalDurationMinutes: Number(m.totalDurationMinutes) || 30,
       tags: Array.isArray(m.tags) ? m.tags : [],
       countries: Array.isArray(m.countries)
         ? m.countries
         : m.country
-        ? [m.country]
+        ? (Array.isArray(m.country) ? m.country : [m.country])
         : ['Россия'],
       country: Array.isArray(m.countries)
         ? m.countries[0]
-        : m.country || 'Россия',
+        : (Array.isArray(m.country) ? m.country[0] : m.country || 'Россия'),
       ageRating: m.ageRating || '12+',
       stills: Array.isArray(m.stills) ? m.stills : [],
       trailerUrl:
@@ -142,7 +150,70 @@ export async function findMovies({
   if (category) combinedFilters.category = category;
   if (search) combinedFilters.q = search;
 
-  const all = getAllMovies();
+  let all: Movie[] = [];
+
+  // Попытка чтения из PostgreSQL через Prisma
+  if (isDatabaseConfigured()) {
+    try {
+      const dbMovies = await prisma.movie.findMany({
+        orderBy: { createdAt: 'asc' },
+      });
+
+      if (dbMovies && dbMovies.length > 0) {
+        all = dbMovies.map((m) => {
+          let epDur: any = { min: 30, max: 30 };
+          if (m.episodeDuration) {
+            if (m.episodeDuration.includes('-')) {
+              const parts = m.episodeDuration.split('-').map((p) => parseInt(p, 10));
+              epDur = { min: parts[0] || 30, max: parts[1] || parts[0] || 30 };
+            } else {
+              const num = parseInt(m.episodeDuration, 10);
+              if (!isNaN(num)) epDur = { min: num, max: num };
+            }
+          }
+
+          return {
+            id: m.id,
+            catalogId: m.catalogId || undefined,
+            slug: m.slug,
+            title: { ru: m.titleRu, en: m.titleEn },
+            description: { ru: m.descriptionRu, en: m.descriptionEn },
+            category: m.category,
+            categorySlug: m.categorySlug,
+            episodes: m.episodesCount,
+            episodesCount: m.episodesCount,
+            episodeDuration: epDur,
+            duration: m.duration,
+            totalDurationMinutes: m.totalDurationMinutes,
+            quality: m.qualities[0] || m.quality || 'HD / 4K',
+            qualities: m.qualities,
+            country: m.countries[0] || m.country || 'Россия',
+            countries: m.countries,
+            year: m.year,
+            yearRange: m.yearRange || String(m.year),
+            languages: m.languages,
+            author: m.author || '',
+            ageRating: m.ageRating,
+            poster: m.poster || '/placeholder.png',
+            trailerUrl: m.trailerUrl,
+            stills: m.stills,
+            tags: m.tags,
+            territory: m.territory,
+            rightsPeriod: m.rightsPeriod,
+            status: m.status,
+            views: m.views,
+          } as unknown as Movie;
+        });
+      }
+    } catch (e) {
+      // Игнорируем ошибку и берем из локальных данных
+    }
+  }
+
+  if (all.length === 0) {
+    all = getAllMovies();
+  }
+
   const filtered = filterMovies(all, combinedFilters);
   const total = filtered.length;
   const totalPages = Math.ceil(total / limit) || 1;
@@ -161,7 +232,7 @@ export async function findMovies({
 
 export function getMovieBySlug(slug: string): Movie | null {
   const all = getAllMovies();
-  return all.find((m) => m.slug === slug || String(m.id) === slug) || null;
+  return all.find((m) => m.slug === slug || String(m.id) === slug || String((m as any).catalogId).toLowerCase() === slug.toLowerCase()) || null;
 }
 
 export async function getRelatedMovies(movie: Movie, limit = 4): Promise<Movie[]> {
@@ -170,7 +241,7 @@ export async function getRelatedMovies(movie: Movie, limit = 4): Promise<Movie[]
     (movie as any).category || (movie as any).categoryId || (movie as any).categorySlug
   );
 
-  // Фильмы из той же категории, исключая текущий
+  // Тайтлы из той же категории, исключая текущий
   const sameCategory = all.filter(
     (m) =>
       String(m.id) !== String(movie.id) &&
@@ -181,7 +252,7 @@ export async function getRelatedMovies(movie: Movie, limit = 4): Promise<Movie[]
     return sameCategory.slice(0, limit);
   }
 
-  // Если в этой категории фильмов меньше, дополняем остальными фильмами каталога
+  // Если в этой категории тайтлов меньше, дополняем остальными тайтлами каталога
   const others = all.filter(
     (m) =>
       String(m.id) !== String(movie.id) &&

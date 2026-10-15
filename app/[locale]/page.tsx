@@ -14,16 +14,16 @@ interface PageProps {
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-function pluralizeMovies(count: number, locale: Locale): string {
+function pluralizeTitles(count: number, locale: Locale): string {
   if (locale === 'en') {
-    return count === 1 ? '1 movie' : `${count} movies`;
+    return count === 1 ? '1 title' : `${count} titles`;
   }
   const mod10 = count % 10;
   const mod100 = count % 100;
-  if (mod100 >= 11 && mod100 <= 19) return `${count} фильмов`;
-  if (mod10 === 1) return `${count} фильм`;
-  if (mod10 >= 2 && mod10 <= 4) return `${count} фильма`;
-  return `${count} фильмов`;
+  if (mod100 >= 11 && mod100 <= 19) return `${count} тайтлов`;
+  if (mod10 === 1) return `${count} тайтл`;
+  if (mod10 >= 2 && mod10 <= 4) return `${count} тайтла`;
+  return `${count} тайтлов`;
 }
 
 export default async function HomePage({ params, searchParams }: PageProps) {
@@ -49,30 +49,30 @@ export default async function HomePage({ params, searchParams }: PageProps) {
 
   return (
     <div className="mx-auto max-w-[1400px] px-6 lg:px-12 py-8">
-      {/* Заголовок */}
+      {/* Заголовок с увеличенным кеглем */}
       <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
         {query
-          ? `Найдено ${pluralizeMovies(total, locale)} по запросу «${query}»`
+          ? `Найдено ${pluralizeTitles(total, locale)} по запросу «${query}»`
           : activeCategoryTitle
-          ? `${activeCategoryTitle} — найдено ${pluralizeMovies(total, locale)}`
-          : `Найдено ${pluralizeMovies(total, locale)}`}
+          ? `${activeCategoryTitle} — найдено ${pluralizeTitles(total, locale)}`
+          : `Найдено ${pluralizeTitles(total, locale)}`}
       </h1>
 
-      {/* Интерактивные фильтры-баблы */}
+      {/* Интерактивные фильтры-баблы с выбором категорий */}
       <FilterBubbles locale={locale} />
 
-      {/* Сетка фильмов */}
+      {/* Сетка тайтлов */}
       {movies.length === 0 ? (
         <div className="py-24 text-center rounded-2xl border border-dashed border-slate-200 bg-white">
-          <p className="text-base font-bold text-slate-800">Ничего не найдено</p>
-          <p className="mt-1 text-xs text-slate-400">
+          <p className="text-lg font-bold text-slate-800">Ничего не найдено</p>
+          <p className="mt-1 text-sm text-slate-400">
             Попробуйте изменить поисковый запрос или сбросить параметры фильтрации.
           </p>
           <Link
             href={`/${locale}`}
-            className="inline-block mt-4 text-xs font-semibold text-[#ff5a1f] hover:underline"
+            className="inline-block mt-4 text-sm font-semibold text-[#ff5a1f] hover:underline"
           >
-            Показать все фильмы
+            Показать все тайтлы
           </Link>
         </div>
       ) : (
@@ -85,10 +85,10 @@ export default async function HomePage({ params, searchParams }: PageProps) {
 
       {/* Пагинация */}
       {totalPages > 1 && (
-        <div className="mt-14 flex items-center justify-center gap-2 text-xs font-semibold text-slate-700">
+        <div className="mt-14 flex items-center justify-center gap-2 text-sm font-semibold text-slate-700">
           <Link
             href={`/${locale}?${new URLSearchParams({ ...currentSearchParams as any, page: String(Math.max(1, currentPage - 1)) })}`}
-            className={`px-3 py-1.5 transition-colors ${currentPage <= 1 ? 'opacity-40 pointer-events-none' : 'hover:text-[#ff5a1f]'}`}
+            className={`px-3.5 py-2 transition-colors ${currentPage <= 1 ? 'opacity-40 pointer-events-none' : 'hover:text-[#ff5a1f]'}`}
           >
             Назад
           </Link>
@@ -103,7 +103,7 @@ export default async function HomePage({ params, searchParams }: PageProps) {
                   {showDots && <span className="px-1 text-slate-400">...</span>}
                   <Link
                     href={`/${locale}?${new URLSearchParams({ ...currentSearchParams as any, page: String(p) })}`}
-                    className={`h-8 w-8 flex items-center justify-center rounded-lg transition-colors ${
+                    className={`h-9 w-9 flex items-center justify-center rounded-lg transition-colors ${
                       currentPage === p ? 'bg-[#ff5a1f] text-white font-bold shadow-sm' : 'hover:bg-slate-100'
                     }`}
                   >
@@ -115,7 +115,7 @@ export default async function HomePage({ params, searchParams }: PageProps) {
 
           <Link
             href={`/${locale}?${new URLSearchParams({ ...currentSearchParams as any, page: String(Math.min(totalPages, currentPage + 1)) })}`}
-            className={`px-3 py-1.5 transition-colors ${currentPage >= totalPages ? 'opacity-40 pointer-events-none' : 'hover:text-[#ff5a1f]'}`}
+            className={`px-3.5 py-2 transition-colors ${currentPage >= totalPages ? 'opacity-40 pointer-events-none' : 'hover:text-[#ff5a1f]'}`}
           >
             Вперед
           </Link>

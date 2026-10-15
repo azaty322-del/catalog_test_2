@@ -26,7 +26,7 @@ const COMPREHENSIVE_RU_MAP: Record<string, string> = {
   'film.year': 'Год',
   'film.inCart': 'В корзине',
   'film.addToCart': 'В корзину',
-  'film.stills': 'Кадры из фильма',
+  'film.stills': 'Кадры из тайтла',
   'film.tags': 'Теги',
   'FILM.TAGS': 'Теги',
 };

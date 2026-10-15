@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { prisma, isDatabaseConfigured } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
 
 const SETTINGS_FILE = path.join(process.cwd(), 'data', 'settings.json');
 
@@ -10,15 +12,17 @@ interface AppSettings {
   telegramBotToken: string;
   telegramChatId: string;
   notificationEmails: string;
+  consoleNoise?: string;
 }
 
-function readSettings(): AppSettings {
+function readLocalSettings(): AppSettings {
   const defaults: AppSettings = {
     siteName: 'Каталог контента UTV Media',
     adminEmail: process.env.ADMIN_NOTIFICATION_EMAIL || process.env.ADMIN_EMAIL || 'admin@utvmedia.ru',
     telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
     telegramChatId: process.env.TELEGRAM_CHAT_ID || '',
     notificationEmails: 'orders@utv.ru, managers@utvmedia.ru',
+    consoleNoise: 'true',
   };
 
   try {
@@ -34,7 +38,7 @@ function readSettings(): AppSettings {
   }
 }
 
-function writeSettings(settings: AppSettings): void {
+function writeLocalSettings(settings: AppSettings): void {
   try {
     fs.writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2), 'utf-8');
   } catch (error) {
@@ -43,15 +47,32 @@ function writeSettings(settings: AppSettings): void {
 }
 
 export async function GET() {
-  const settings = readSettings();
-  return NextResponse.json({ settings });
+  const defaults = readLocalSettings();
+
+  // 1. Попытка чтения настроек из PostgreSQL через Prisma
+  if (isDatabaseConfigured()) {
+    try {
+      const dbSettings = await prisma.setting.findMany();
+      if (dbSettings && dbSettings.length > 0) {
+        const settingsMap: any = { ...defaults };
+        dbSettings.forEach((s) => {
+          settingsMap[s.key] = s.value;
+        });
+        return NextResponse.json({ settings: settingsMap, source: 'postgresql' });
+      }
+    } catch (dbErr) {
+      console.warn('[API/settings] Ошибка чтения настроек из Prisma:', dbErr);
+    }
+  }
+
+  return NextResponse.json({ settings: defaults, source: 'json_fallback' });
 }
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    // Проверка действия "Отправить тестовое сообщение в Telegram"
+    // Тест Telegram
     if (body.action === 'test-telegram') {
       const token = body.telegramBotToken || process.env.TELEGRAM_BOT_TOKEN;
       const chatId = body.telegramChatId || process.env.TELEGRAM_CHAT_ID;
@@ -85,19 +106,41 @@ export async function POST(req: NextRequest) {
     }
 
     // Сохранение настроек
-    const current = readSettings();
+    const current = readLocalSettings();
     const updated: AppSettings = {
       siteName: body.siteName !== undefined ? String(body.siteName).trim() : current.siteName,
       adminEmail: body.adminEmail !== undefined ? String(body.adminEmail).trim() : current.adminEmail,
       telegramBotToken: body.telegramBotToken !== undefined ? String(body.telegramBotToken).trim() : current.telegramBotToken,
       telegramChatId: body.telegramChatId !== undefined ? String(body.telegramChatId).trim() : current.telegramChatId,
       notificationEmails: body.notificationEmails !== undefined ? String(body.notificationEmails).trim() : current.notificationEmails,
+      consoleNoise: body.consoleNoise !== undefined ? String(body.consoleNoise) : current.consoleNoise,
     };
 
-    writeSettings(updated);
+    // 1. Сохранение в PostgreSQL через Prisma
+    if (isDatabaseConfigured()) {
+      try {
+        const entries = Object.entries(updated);
+        await prisma.$transaction(
+          entries.map(([key, value]) =>
+            prisma.setting.upsert({
+              where: { key },
+              update: { value: String(value) },
+              create: { key, value: String(value) },
+            })
+          )
+        );
+        logger.info('SETTINGS_PRISMA_UPDATED', { updatedKeys: Object.keys(updated) });
+      } catch (dbErr: any) {
+        logger.warn('PRISMA_SETTINGS_UPDATE_FAILED', { error: dbErr?.message });
+      }
+    }
+
+    // 2. Резервное сохранение в JSON
+    writeLocalSettings(updated);
+
     return NextResponse.json({ ok: true, settings: updated });
   } catch (error: any) {
-    console.error('Ошибка сохранения настроек:', error);
+    logger.error('SETTINGS_UPDATE_ERROR', { error: error?.message });
     return NextResponse.json({ error: error.message || 'Ошибка сервера' }, { status: 500 });
   }
 }

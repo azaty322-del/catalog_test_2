@@ -53,12 +53,12 @@ export function CartView() {
           setImportedNotice(
             locale === 'en'
               ? `Added ${data.movies.length} item(s) from shared link`
-              : `Добавлено фильмов по ссылке: ${data.movies.length}`
+              : `Добавлено тайтлов по ссылке: ${data.movies.length}`
           );
           setTimeout(() => setImportedNotice(null), 5000);
         }
       })
-      .catch((e) => console.error('Ошибка загрузки фильмов по ссылке:', e));
+      .catch((e) => console.error('Ошибка загрузки тайтлов по ссылке:', e));
   }, [searchParams, isReady]);
 
   const handleShare = async () => {

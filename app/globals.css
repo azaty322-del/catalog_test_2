@@ -17,6 +17,7 @@
 
   html {
     -webkit-font-smoothing: antialiased;
+    font-size: 18px; /* Увеличение всех шрифтов на 2 кегля (с 16px до 18px) */
   }
 
   body {
@@ -43,7 +44,7 @@
   }
 
   .label-caps {
-    @apply text-[14px] font-semibold uppercase tracking-wide;
+    @apply text-[15px] font-semibold uppercase tracking-wide;
   }
 }
 

@@ -7,61 +7,92 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// Каталог контента (Фильмы и передачи)
+// ==============================================================================
+// 1. КАРТОЧКИ КОНТЕНТА (ТАЙТЛЫ КАТАЛОГА)
+// ==============================================================================
 model Movie {
   id                   String   @id @default(cuid())
+  catalogId            String?  // Буквенно-цифровой шифр из документа (A1, B2, C1, etc.)
   slug                 String   @unique
   titleRu              String
   titleEn              String
   descriptionRu        String   @default("")
   descriptionEn        String   @default("")
-  category             String
-  categorySlug         String
-  year                 Int      @default(2024)
-  quality              String   @default("Full HD")
-  qualities            String[] @default(["Full HD"])
-  duration             String   @default("30 мин")
+  category             String   // Русское название категории
+  categorySlug         String   // Слаг (nature, travel, culinary, etc.)
+  episodesCount        Int      @default(1)
+  episodeDuration      String?  // Хрон одного эпизода (например: "15-23" или "30")
+  duration             String   @default("30 мин") // Отображаемая длительность ("03:48:55", "30 мин")
   totalDurationMinutes Int      @default(30)
-  status               String   @default("Опубликован")
-  poster               String   @default("")
-  trailerUrl           String   @default("")
-  stills               String[] @default([])
-  tags                 String[] @default([])
+  quality              String   @default("HD / 4K")
+  qualities            String[] @default(["HD", "4K"])
   country              String   @default("Россия")
   countries            String[] @default(["Россия"])
-  ageRating            String   @default("12+")
+  year                 Int      @default(2024)
+  yearRange            String?  // Диапазон лет ("2020-2024", "2023-2026")
   languages            String[] @default(["Русский"])
+  author               String?  // Автор / студия / режиссер ("Kitchen TV", "Игорь Фалелюхин")
+  ageRating            String   @default("12+")
+  trailerUrl           String   @default("") // Ссылка на видео (YouTube, Rutube, VK Video, Яндекс Диск)
   territory            String   @default("Весь мир")
   rightsPeriod         String   @default("До 31.12.2028")
+  tags                 String[] @default([])
+  poster               String   @default("")
+  stills               String[] @default([])
+  status               String   @default("Опубликован") // Опубликован / Черновик
   views                Int      @default(0)
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 
   @@index([categorySlug])
+  @@index([catalogId])
   @@index([status])
 }
 
-// Пользователи платформы (Гости, Пользователи, Администраторы)
+// ==============================================================================
+// 2. ПОЛЬЗОВАТЕЛИ И АВТОРИЗАЦИЯ
+// ==============================================================================
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String   // Захешированный пароль PBKDF2
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String    // Хеш пароля (PBKDF2)
+  salt      String    @default("")
   fullName  String
-  role      String   @default("USER") // ADMIN или USER
+  role      String    @default("USER") // ADMIN, USER, MANAGER
   company   String?
   position  String?
   phone     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  sessions  Session[]
+
+  @@index([email])
+  @@index([role])
 }
 
-// Заявки / Заказы контента из корзины
+// Сессии пользователей
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([userId])
+}
+
+// ==============================================================================
+// 3. ЗАКАЗЫ И КОРЗИНА
+// ==============================================================================
 model Order {
   id         String      @id // ORD-XXXXXX
   fullName   String
   email      String
   phone      String
   company    String?
+  comment    String?
   status     String      @default("new") // new, processing, completed, cancelled
   totalCount Int         @default(1)
   createdAt  DateTime    @default(now())
@@ -83,9 +114,13 @@ model OrderItem {
   category             String?
   qualities            String[] @default([])
   totalDurationMinutes Int?
+
+  @@index([orderId])
 }
 
-// Журнал аудита и логирования безопасности
+// ==============================================================================
+// 4. ЖУРНАЛ АУДИТА И БЕЗОПАСНОСТИ
+// ==============================================================================
 model AuditLog {
   id        String   @id @default(cuid())
   timestamp DateTime @default(now())
@@ -100,7 +135,9 @@ model AuditLog {
   @@index([timestamp])
 }
 
-// Системные настройки сайта
+// ==============================================================================
+// 5. НАСТРОЙКИ СИСТЕМЫ
+// ==============================================================================
 model Setting {
   key       String   @id
   value     String

@@ -82,16 +82,17 @@ export default async function FilmPage({ params }: FilmPageProps) {
 
   // Таблица характеристик с безопасной фильтрацией незаполненных полей
   const metadataItems = [
+    ...((movie as any).catalogId ? [{ label: t('film.catalogId', 'Шифр в каталоге'), value: (movie as any).catalogId }] : []),
     { label: t('film.episodes', 'Серии'), value: movie.episodes },
     { label: t('film.episodeDuration', 'Хрон серии'), value: episodeDuration },
-    { label: t('film.totalDuration', 'Общий хрон'), value: totalDuration },
+    { label: t('film.totalDuration', 'Общий хрон'), value: movie.duration || totalDuration },
     { label: t('film.quality', 'Качество'), value: quality },
     { label: t('film.country', 'Страна'), value: country },
     { label: t('film.language', 'Язык'), value: language },
-    { label: t('film.author', 'Правообладатель'), value: (movie as any).author || 'UTV Media' },
+    { label: t('film.author', 'Автор / Студия'), value: (movie as any).author || 'UTV Media' },
     { label: t('film.ageRating', 'Возрастной рейтинг'), value: movie.ageRating },
     { label: t('film.territory', 'Территория'), value: territory },
-    { label: t('film.year', 'Год'), value: formatYears(movie) },
+    { label: t('film.year', 'Год'), value: (movie as any).yearRange || formatYears(movie) },
     ...(movie.rightsPeriod ? [{ label: t('film.rightsPeriod', 'Срок прав'), value: movie.rightsPeriod }] : []),
   ].filter((item) => item.value != null && String(item.value).trim() !== '');
 
@@ -101,9 +102,9 @@ export default async function FilmPage({ params }: FilmPageProps) {
       <div>
         <Link
           href={`/${locale}`}
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-[#ff5a1f] transition-colors"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#ff5a1f] transition-colors"
         >
-          <ArrowLeft size={15} />
+          <ArrowLeft size={16} />
           <span>{t('film.back', 'Назад в каталог')}</span>
         </Link>
       </div>
@@ -141,18 +142,18 @@ export default async function FilmPage({ params }: FilmPageProps) {
             </h1>
 
             {description && (
-              <p className="mt-4 text-sm text-slate-600 leading-relaxed">
+              <p className="mt-4 text-base text-slate-600 leading-relaxed">
                 {description}
               </p>
             )}
 
-            {/* Таблица метаданных */}
+            {/* Таблица метаданных с увеличенным кеглем */}
             <div className="mt-8 border-t border-slate-100 pt-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5 text-sm">
                 {metadataItems.map((item, idx) => (
                   <div key={idx} className="flex items-center justify-between border-b border-slate-50 pb-2">
-                    <span className="text-slate-400 font-medium">{item.label}</span>
-                    <span className="font-semibold text-slate-800 text-right ml-4">
+                    <span className="text-slate-500 font-medium">{item.label}</span>
+                    <span className="font-semibold text-slate-900 text-right ml-4">
                       {String(item.value)}
                     </span>
                   </div>
@@ -163,7 +164,7 @@ export default async function FilmPage({ params }: FilmPageProps) {
             {/* Теги */}
             {movie.tags && movie.tags.length > 0 && (
               <div className="mt-6 pt-4 border-t border-slate-100">
-                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">
+                <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5">
                   {t('film.tags', 'Теги')}
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -171,7 +172,7 @@ export default async function FilmPage({ params }: FilmPageProps) {
                     <Link
                       key={idx}
                       href={`/${locale}?q=${encodeURIComponent(tag.replace(/^#/, ''))}`}
-                      className="inline-block rounded-lg bg-orange-50/80 px-3 py-1 text-xs font-medium text-[#ff5a1f] hover:bg-orange-100 transition-colors"
+                      className="inline-block rounded-lg bg-orange-50/80 px-3 py-1.5 text-sm font-medium text-[#ff5a1f] hover:bg-orange-100 transition-colors"
                     >
                       {tag.startsWith('#') ? tag : `#${tag}`}
                     </Link>
@@ -188,21 +189,21 @@ export default async function FilmPage({ params }: FilmPageProps) {
         </div>
       </div>
 
-      {/* Галерея кадров из фильма */}
+      {/* Галерея кадров из тайтла */}
       {movie.stills && movie.stills.length > 0 && (
         <div className="pt-8 border-t border-slate-100">
-          <h2 className="text-lg font-bold text-slate-900 mb-5">
-            {t('film.stills', 'Кадры из фильма')}
+          <h2 className="text-xl font-bold text-slate-900 mb-5">
+            {t('film.stills', 'Кадры из тайтла')}
           </h2>
           <StillsGallery stills={movie.stills} />
         </div>
       )}
 
-      {/* Похожие фильмы */}
+      {/* Похожие тайтлы */}
       {relatedMovies && relatedMovies.length > 0 && (
         <div className="pt-8 border-t border-slate-100">
-          <h2 className="text-lg font-bold text-slate-900 mb-6">
-            {locale === 'ru' ? 'Похожие фильмы' : 'Related movies'}
+          <h2 className="text-xl font-bold text-slate-900 mb-6">
+            {locale === 'ru' ? 'Похожие тайтлы' : 'Related titles'}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {relatedMovies.map((relMovie) => (

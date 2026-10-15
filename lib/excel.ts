@@ -3,16 +3,23 @@ import { CATEGORY_MAP, getCategorySlug } from './filters';
 
 export interface ExcelMovieRow {
   id?: string;
+  catalogId?: string;
   titleRu: string;
   titleEn?: string;
   descriptionRu?: string;
   descriptionEn?: string;
   category: string;
   year?: number;
+  yearRange?: string;
+  author?: string;
+  episodesCount?: number;
+  episodeDuration?: string;
   quality?: string;
+  qualities?: string[];
   duration?: string;
   totalDurationMinutes?: number;
   country?: string;
+  countries?: string[];
   languages?: string[];
   ageRating?: string;
   territory?: string;

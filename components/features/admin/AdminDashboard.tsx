@@ -86,15 +86,15 @@ function getCategorySlug(val: any): string {
 function formatCount(count: number): string {
   const mod10 = count % 10;
   const mod100 = count % 100;
-  if (mod100 >= 11 && mod100 <= 19) return `${count} фильмов`;
-  if (mod10 === 1) return `${count} фильм`;
-  if (mod10 >= 2 && mod10 <= 4) return `${count} фильма`;
-  return `${count} фильмов`;
+  if (mod100 >= 11 && mod100 <= 19) return `${count} тайтлов`;
+  if (mod10 === 1) return `${count} тайтл`;
+  if (mod10 >= 2 && mod10 <= 4) return `${count} тайтла`;
+  return `${count} тайтлов`;
 }
 
 const NAV_ITEMS = [
   { id: 'dashboard', label: 'Дашборд', icon: LayoutGrid },
-  { id: 'movies', label: 'Фильмы', icon: Film },
+  { id: 'movies', label: 'Тайтлы', icon: Film },
   { id: 'categories', label: 'Категории', icon: Folder },
   { id: 'orders', label: 'Заказы', icon: ShoppingCart },
   { id: 'logs', label: 'Логи и Аудит', icon: FileText },
@@ -403,7 +403,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
   const handleSaveForm = (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentMovie || !currentMovie.title.trim()) {
-      alert('Введите название фильма');
+      alert('Введите название тайтла');
       return;
     }
 
@@ -425,7 +425,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
   };
 
   const handleDeleteMovie = (id: string) => {
-    if (confirm('Удалить этот фильм из каталога?')) {
+    if (confirm('Удалить этот тайтл из каталога?')) {
       saveMovies(movies.filter((m) => m.id !== id));
     }
   };
@@ -515,7 +515,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
           <div>
             {isEditing ? (
               <div className="text-xs text-slate-400 font-medium">
-                Фильмы &gt; <span className="text-[#ff5a1f]">Редактирование</span>
+                Тайтлы &gt; <span className="text-[#ff5a1f]">Редактирование</span>
               </div>
             ) : selectedCategory ? (
               <div className="text-xs text-slate-400 font-medium">
@@ -525,7 +525,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
               <h1 className="text-xl font-bold text-slate-900">
                 {tab === 'dashboard' && 'Добро пожаловать, Администратор'}
                 {tab === 'categories' && 'Управление категориями'}
-                {tab === 'movies' && 'Управление фильмами'}
+                {tab === 'movies' && 'Управление тайтлами'}
                 {tab === 'orders' && 'Управление заказами'}
                 {tab === 'users' && 'Управление пользователями'}
                 {tab === 'settings' && 'Настройки системы'}
@@ -533,7 +533,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
             )}
             <p className="text-xs text-slate-500 mt-0.5">
               {isEditing
-                ? currentMovie?.title || 'Новый фильм'
+                ? currentMovie?.title || 'Новый тайтл'
                 : tab === 'categories'
                 ? `Каталог содержит ${categoryCards.length} основных медиа-направлений`
                 : 'Панель управления каталогом контента UTV Media'}
@@ -588,7 +588,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
                               </span>
                             </div>
                             <p className="text-xs text-slate-700 font-medium mt-1 truncate">{ord.fullName} · {ord.phone}</p>
-                            <p className="text-[11px] text-slate-400">{ord.items?.length || 0} фильмов · {new Date(ord.createdAt).toLocaleDateString('ru-RU')}</p>
+                            <p className="text-[11px] text-slate-400">{ord.items?.length || 0} тайтлов · {new Date(ord.createdAt).toLocaleDateString('ru-RU')}</p>
                           </div>
                           <button
                             onClick={() => setTab('orders')}
@@ -604,7 +604,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
               </div>
 
               <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
-                <h2 className="text-base font-bold text-slate-900 mb-4">Популярные фильмы</h2>
+                <h2 className="text-base font-bold text-slate-900 mb-4">Популярные тайтлы</h2>
                 <div className="space-y-2">
                   {movies.slice(0, 6).map((m) => (
                     <div
@@ -614,7 +614,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
                         setIsEditing(true);
                       }}
                       className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 cursor-pointer transition-colors group"
-                      title="Нажмите, чтобы редактировать фильм"
+                      title="Нажмите, чтобы редактировать тайтл"
                     >
                       <div className="w-12 h-8 rounded bg-slate-900 overflow-hidden flex-shrink-0">
                         {m.poster ? (
@@ -667,7 +667,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
             </div>
           )}
 
-          {/* 3. ТАБЛИЦА ФИЛЬМОВ */}
+          {/* 3. ТАБЛИЦА ТАЙТЛОВ */}
           {!isEditing && (tab === 'movies' || selectedCategory) && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
@@ -682,7 +682,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
                     </button>
                   )}
                   <h2 className="text-lg font-bold text-slate-900">
-                    {selectedCategory ? `Категория: ${selectedCategory}` : 'Все фильмы'}
+                    {selectedCategory ? `Категория: ${selectedCategory}` : 'Все тайтлы'}
                   </h2>
                 </div>
                 <div className="flex items-center gap-2">
@@ -716,7 +716,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
                     className="px-4 py-2.5 bg-[#ff5a1f] text-white text-xs font-semibold rounded-xl hover:bg-[#e04810] shadow-md shadow-orange-500/20 flex items-center gap-1.5"
                   >
                     <Plus size={15} />
-                    <span>Добавить фильм</span>
+                    <span>Добавить тайтл</span>
                   </button>
                 </div>
               </div>
@@ -820,13 +820,13 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
             </div>
           )}
 
-          {/* 4. ФОРМА РЕДАКТИРОВАНИЯ ФИЛЬМА */}
+          {/* 4. ФОРМА РЕДАКТИРОВАНИЯ ТАЙТЛА */}
           {isEditing && currentMovie && (
             <form onSubmit={handleSaveForm} className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2 space-y-6 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-2">Название фильма</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-2">Название тайтла</label>
                     <input
                       type="text"
                       value={currentMovie.title}
@@ -931,9 +931,9 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
                     />
                   </div>
 
-                  {/* КАДРЫ ИЗ ФИЛЬМА С КНОПКОЙ УДАЛЕНИЯ */}
+                  {/* КАДРЫ ИЗ ТАЙТЛА С КНОПКОЙ УДАЛЕНИЯ */}
                   <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
-                    <label className="block text-xs font-semibold text-slate-700 mb-2">Кадры из фильма</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-2">Кадры из тайтла</label>
                     <div className="grid grid-cols-3 gap-2">
                       {currentMovie.stills.map((st, idx) => (
                         <div key={idx} className="group relative aspect-video rounded overflow-hidden bg-slate-800 border border-slate-200">

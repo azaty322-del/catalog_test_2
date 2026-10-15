@@ -123,9 +123,13 @@ export function formatCardMeta(movie: Movie, locale: Locale = 'ru'): string {
   if (!movie) return '';
   const parts: string[] = [];
 
-  const durationStr = movie.episodeDuration ? formatRange(movie.episodeDuration, locale) : '';
-  if (movie.episodes && durationStr) {
+  const durationStr = movie.episodeDuration
+    ? (typeof movie.episodeDuration === 'object' ? formatRange(movie.episodeDuration as any, locale) : String(movie.episodeDuration))
+    : '';
+  if (movie.episodes && movie.episodes > 1 && durationStr) {
     parts.push(`${movie.episodes} × ${durationStr}`);
+  } else if (movie.duration) {
+    parts.push(movie.duration);
   } else if (durationStr) {
     parts.push(durationStr);
   }

@@ -20,7 +20,7 @@ const dictionaries: Record<Locale, any> = {
 
 const COMPREHENSIVE_RU_MAP: Record<string, string> = {
   'cart.title': 'Корзина',
-  'cart.videos': 'фильмов',
+  'cart.videos': 'тайтлов',
   'cart.empty': 'Ваша корзина пуста',
   'cart.emptyDesc': 'Перейдите в каталог, чтобы выбрать интересующий контент',
   'cart.goToCatalog': 'Перейти в каталог',

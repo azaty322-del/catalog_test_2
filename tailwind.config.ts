@@ -27,12 +27,12 @@ const config: Config = {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        h1: ['32px', { lineHeight: '40px', fontWeight: '700' }],
-        h2: ['24px', { lineHeight: '32px', fontWeight: '700' }],
-        h3: ['20px', { lineHeight: '28px', fontWeight: '600' }],
-        body: ['16px', { lineHeight: '26px' }],
-        'body-sm': ['14px', { lineHeight: '22px' }],
-        caption: ['12px', { lineHeight: '18px' }],
+        h1: ['34px', { lineHeight: '42px', fontWeight: '700' }], // +2px (кегля)
+        h2: ['26px', { lineHeight: '34px', fontWeight: '700' }], // +2px (кегля)
+        h3: ['22px', { lineHeight: '30px', fontWeight: '600' }], // +2px (кегля)
+        body: ['18px', { lineHeight: '28px' }],                   // +2px (кегля)
+        'body-sm': ['16px', { lineHeight: '24px' }],              // +2px (кегля)
+        caption: ['14px', { lineHeight: '20px' }],                // +2px (кегля)
       },
       borderRadius: {
         card: '12px',

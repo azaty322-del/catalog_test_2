@@ -50,46 +50,59 @@ export interface Category {
 export interface Movie {
   id: string;
   /** Идентификатор строки в исходной таблице — для сверки выгрузок. Не первичный ключ. */
-  sourceId: string;
+  sourceId?: string;
+  catalogId?: string;
   slug: string;
   category: string;
+  categoryId?: string;
+  categorySlug?: string;
 
   title: LocalizedText;
   description: LocalizedText;
 
-  episodes: number;
+  episodes?: number;
+  episodesCount?: number;
   /** Длительность одного эпизода в минутах. В источнике встречается «18-22». */
-  episodeDuration: Range;
+  episodeDuration?: Range | string;
+  /** Форматированная общая длительность ("03:48:55", "30 мин") */
+  duration?: string;
   /**
    * Общий хронометраж в минутах. В источнике три разных формата — целые часы,
    * дробные («0,5») и «3:18:00», поэтому нормализуем в минуты при импорте.
    */
-  totalDurationMinutes: number;
+  totalDurationMinutes?: number;
 
   /** «HD / 4K» в источнике — это два значения, а не одно. */
   qualities: string[];
+  quality?: any;
   /** «Съёмки со всего мира» приведено к значению «Весь мир». */
   countries: string[];
+  country?: any;
 
-  yearFrom: number;
-  yearTo: number;
+  year?: number;
+  yearRange?: string;
+  yearFrom?: number;
+  yearTo?: number;
 
-  languages: Locale[];
-  author: string;
-  ageRating: string;
-  distributionTerritory: string;
+  languages?: any;
+  author?: string;
+  ageRating?: string;
+  distributionTerritory?: string;
+  territory?: string;
   /** null, если в источнике стоял прочерк. */
-  rightsPeriod: string | null;
-  tags: string[];
+  rightsPeriod?: string | null;
+  tags?: string[];
 
   /**
-   * Трейлер лежит на внешнем хостинге, а не в проекте. Встречаются YouTube,
-   * Rutube и Яндекс.Диск, поэтому плеер выбирается по `host`, а не по подстроке
-   * в URL внутри компонента. Яндекс.Диск не встраивается — для него открываем ссылку.
+   * Трейлер лежит на внешнем хостинге, а не в проекте.
    */
-  trailer: Trailer;
+  trailer?: any;
+  trailerUrl?: string;
   poster: string;
-  stills: string[];
+  image?: string;
+  stills?: string[];
+  status?: string;
+  views?: number;
 }
 
 export interface CatalogData {

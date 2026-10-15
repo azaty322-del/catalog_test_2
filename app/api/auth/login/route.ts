@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { prisma, isDatabaseConfigured } from '@/lib/prisma';
 import {
   readUsers,
   verifyPassword,
   createSessionToken,
   SESSION_COOKIE_NAME,
 } from '@/lib/auth/server';
-import type { User } from '@/lib/auth/types';
+import type { User, Role } from '@/lib/auth/types';
 import { logger } from '@/lib/logger';
 
 export async function POST(req: NextRequest) {
@@ -22,7 +23,7 @@ export async function POST(req: NextRequest) {
 
     let matchedUser: User | null = null;
 
-    // 1. Проверка учетных записей администратора (admin@test.ru, admin@utvmedia.ru или из env)
+    // 1. Проверка администратора
     if (
       ((cleanEmail === 'admin@test.ru' || cleanEmail === 'admin@utv.ru') && password === 'admin123') ||
       (cleanEmail === adminEmail && password === adminPassword)
@@ -45,8 +46,33 @@ export async function POST(req: NextRequest) {
         position: 'Редактор контента',
         phone: '+7 (911) 234-56-78',
       };
-    } else {
-      // 2. Проверка зарегистрированных пользователей
+    }
+
+    // 2. Проверка в PostgreSQL через Prisma
+    if (!matchedUser && isDatabaseConfigured()) {
+      try {
+        const dbUser = await prisma.user.findUnique({
+          where: { email: cleanEmail },
+        });
+
+        if (dbUser && verifyPassword(password, dbUser.password, dbUser.salt)) {
+          matchedUser = {
+            id: dbUser.id,
+            email: dbUser.email,
+            fullName: dbUser.fullName,
+            role: dbUser.role as Role,
+            company: dbUser.company || undefined,
+            position: dbUser.position || undefined,
+            phone: dbUser.phone || undefined,
+          };
+        }
+      } catch (dbErr: any) {
+        logger.warn('PRISMA_LOGIN_CHECK_FAILED', { error: dbErr?.message });
+      }
+    }
+
+    // 3. Резервная проверка в локальном JSON (если БД нет или пользователь там)
+    if (!matchedUser) {
       const users = readUsers();
       const found = users.find((u) => u.email.toLowerCase() === cleanEmail);
 
@@ -86,7 +112,7 @@ export async function POST(req: NextRequest) {
 
     return res;
   } catch (error: any) {
-    console.error('Ошибка входа:', error);
+    logger.error('AUTH_LOGIN_ERROR', { error: error?.message });
     return NextResponse.json({ ok: false, reason: 'invalid_credentials' }, { status: 500 });
   }
 }

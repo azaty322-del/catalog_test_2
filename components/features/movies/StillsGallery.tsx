@@ -55,7 +55,7 @@ export function StillsGallery({ stills, movieTitle = '' }: StillsGalleryProps) {
   return (
     <section className="space-y-4">
       <h3 className="text-xl font-bold text-slate-900">
-        {t('film.stills') || 'Кадры из фильма'}
+        {t('film.stills') || 'Кадры из тайтла'}
       </h3>
 
       {/* Сетка превью кадров */}
