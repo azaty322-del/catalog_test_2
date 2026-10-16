@@ -26,7 +26,6 @@
   "auth.registerSubtitle": "Заполните форму для создания новой учетной записи",
   "auth.signIn": "Войти",
   "auth.signUp": "Зарегистрироваться",
-  "auth.demoHint": "Демо-доступ: admin@test.ru / admin",
   "auth.login": "Вход",
   "auth.register": "Регистрация",
   "auth.position": "Должность",

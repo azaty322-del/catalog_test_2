@@ -18,16 +18,13 @@ export async function POST(req: NextRequest) {
     }
 
     const cleanEmail = String(email).trim().toLowerCase();
-    const adminEmail = (process.env.ADMIN_EMAIL || 'admin@utvmedia.ru').toLowerCase();
-    const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
+    const adminEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+    const adminPassword = process.env.ADMIN_PASSWORD;
 
     let matchedUser: User | null = null;
 
-    // 1. Проверка администратора
-    if (
-      ((cleanEmail === 'admin@test.ru' || cleanEmail === 'admin@utv.ru') && password === 'admin123') ||
-      (cleanEmail === adminEmail && password === adminPassword)
-    ) {
+    // 1. Администратор — только из .env (ADMIN_EMAIL / ADMIN_PASSWORD)
+    if (adminEmail && adminPassword && cleanEmail === adminEmail && password === adminPassword) {
       matchedUser = {
         id: 'admin-1',
         email: cleanEmail,
@@ -35,16 +32,6 @@ export async function POST(req: NextRequest) {
         role: 'ADMIN',
         company: 'UTV Media',
         position: 'Главный редактор',
-      };
-    } else if (cleanEmail === 'user@test.ru' && password === 'user123') {
-      matchedUser = {
-        id: 'usr-1',
-        email: 'user@test.ru',
-        fullName: 'Константин Константинопольский',
-        role: 'USER',
-        company: 'ООО ЮТВ Медиа',
-        position: 'Редактор контента',
-        phone: '+7 (911) 234-56-78',
       };
     }
 

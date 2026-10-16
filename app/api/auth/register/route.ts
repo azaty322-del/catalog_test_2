@@ -20,9 +20,9 @@ export async function POST(req: NextRequest) {
     }
 
     const cleanEmail = String(email).trim().toLowerCase();
-    const adminEmail = (process.env.ADMIN_EMAIL || 'admin@utvmedia.ru').toLowerCase();
+    const adminEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
 
-    if (cleanEmail === adminEmail) {
+    if (adminEmail && cleanEmail === adminEmail) {
       return NextResponse.json({ ok: false, reason: 'email_taken' }, { status: 409 });
     }
 

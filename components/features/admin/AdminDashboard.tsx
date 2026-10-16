@@ -426,7 +426,10 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
 
   const handleDeleteMovie = (id: string) => {
     if (confirm('Удалить этот тайтл из каталога?')) {
-      saveMovies(movies.filter((m) => m.id !== id));
+      setMovies(movies.filter((m) => m.id !== id));
+      fetch(`/api/movies?id=${encodeURIComponent(id)}`, { method: 'DELETE' }).catch(() =>
+        alert('Ошибка при удалении')
+      );
     }
   };
 

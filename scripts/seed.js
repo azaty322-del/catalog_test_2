@@ -1,13 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 
 const prisma = new PrismaClient();
-
-function hashPassword(password, salt) {
-  return crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
-}
 
 async function main() {
   console.log('--- Начало миграции данных в PostgreSQL ---');
@@ -35,54 +30,7 @@ async function main() {
     create: { key: 'consoleNoise', value: 'true' },
   });
 
-  // 2. Создаем учетные записи
-  console.log('2. Создание учетных записей администраторов и тестовых пользователей...');
-  const salt = 'utv-secure-salt-2026';
-
-  const users = [
-    {
-      email: 'admin@test.ru',
-      password: hashPassword('admin123', salt),
-      salt,
-      fullName: 'Администратор системы',
-      role: 'ADMIN',
-      company: 'UTV Media',
-      position: 'Главный редактор',
-    },
-    {
-      email: 'admin@utvmedia.ru',
-      password: hashPassword('admin123', salt),
-      salt,
-      fullName: 'Константин Васильев',
-      role: 'ADMIN',
-      company: 'UTV Media',
-      position: 'Директор по контенту',
-    },
-    {
-      email: 'user@test.ru',
-      password: hashPassword('user123', salt),
-      salt,
-      fullName: 'Иван Покупатель',
-      role: 'USER',
-      company: 'Телеканал Премьер',
-      position: 'Менеджер по закупкам',
-    },
-  ];
-
-  for (const u of users) {
-    await prisma.user.upsert({
-      where: { email: u.email },
-      update: {
-        password: u.password,
-        salt: u.salt,
-        role: u.role,
-        fullName: u.fullName,
-        company: u.company,
-        position: u.position,
-      },
-      create: u,
-    });
-  }
+  // 2. Учетные записи не сидятся: админ берется из ADMIN_EMAIL/ADMIN_PASSWORD в .env
 
   // 3. Переносим каталог тайтлов из data/data.json
   console.log('3. Миграция тайтлов из актуального data/data.json...');

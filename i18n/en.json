@@ -30,7 +30,6 @@
   "auth.name": "Full Name",
   "auth.phone": "Phone Number",
   "auth.company": "Company",
-  "auth.demoHint": "Demo credentials:",
   "auth.invalidCredentials": "Invalid email or password",
   "auth.emailTaken": "An account with this email already exists",
   "auth.alreadyHaveAccount": "Already have an account?",

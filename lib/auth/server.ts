@@ -5,7 +5,8 @@ import type { User, Role } from './types';
 
 const USERS_FILE = path.join(process.cwd(), 'data', 'users.json');
 const SESSION_COOKIE_NAME = 'utv_session';
-const SECRET = process.env.SESSION_SECRET || 'utv-secure-production-secret-key-2026';
+if (!process.env.SESSION_SECRET) throw new Error('SESSION_SECRET не задан в .env');
+const SECRET: string = process.env.SESSION_SECRET;
 
 export interface StoredUser extends User {
   passwordHash: string;

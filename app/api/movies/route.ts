@@ -139,7 +139,8 @@ export async function POST(req: NextRequest) {
           const titleEn = typeof item.title === 'object' ? item.title.en : (item.titleRu || titleRu);
           const descRu = typeof item.description === 'object' ? item.description.ru : (item.descriptionRu || item.description || '');
           const descEn = typeof item.description === 'object' ? item.description.en : (item.descriptionEn || descRu);
-          const slug = item.slug || `title-${item.catalogId ? item.catalogId.toLowerCase() : Date.now()}`;
+          const id = item.id ? String(item.id) : crypto.randomUUID();
+          const slug = item.slug || `title-${item.catalogId ? item.catalogId.toLowerCase() : id}`;
           const catSlug = getCategorySlug(item.category || item.categorySlug || 'Природа');
 
           const movieData = {
@@ -175,21 +176,19 @@ export async function POST(req: NextRequest) {
             views: Number(item.views) || 0,
           };
 
+          // id — стабильный ключ (админка не присылает slug)
           return prisma.movie.upsert({
-            where: { slug },
+            where: { id },
             update: movieData,
-            create: {
-              id: item.id ? String(item.id) : undefined,
-              slug,
-              ...movieData,
-            },
+            create: { id, slug, ...movieData },
           });
         });
 
         await prisma.$transaction(operations);
         logger.info('MOVIES_PRISMA_UPSERTED', { count: incomingList.length });
       } catch (dbErr: any) {
-        logger.warn('MOVIES_PRISMA_UPSERT_FAILED', { error: dbErr?.message });
+        logger.error('MOVIES_PRISMA_UPSERT_FAILED', { error: dbErr?.message });
+        return NextResponse.json({ error: 'Ошибка сохранения в БД', details: dbErr?.message }, { status: 500 });
       }
     }
 

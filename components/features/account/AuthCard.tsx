@@ -96,28 +96,6 @@ export function AuthCard({ mode }: { mode: Mode }) {
           {isRegister ? t('auth.registerSubtitle') : t('auth.loginSubtitle')}
         </p>
 
-        {!isRegister && (
-          <div className="mt-4 rounded-xl bg-orange-50/70 p-3 text-xs border border-orange-100">
-            <span className="font-semibold text-slate-800">Тестовые аккаунты для входа (клик для заполнения):</span>
-            <div className="mt-1.5 flex flex-wrap gap-2 text-[11px]">
-              <button
-                type="button"
-                onClick={() => setFields((prev) => ({ ...prev, email: 'admin@test.ru', password: 'admin123' }))}
-                className="rounded-lg bg-white px-2.5 py-1 text-[#ff5a1f] font-medium border border-orange-200 hover:bg-orange-100/50 transition-colors shadow-2xs"
-              >
-                Администратор: admin@test.ru
-              </button>
-              <button
-                type="button"
-                onClick={() => setFields((prev) => ({ ...prev, email: 'user@test.ru', password: 'user123' }))}
-                className="rounded-lg bg-white px-2.5 py-1 text-slate-700 font-medium border border-slate-200 hover:bg-slate-50 transition-colors shadow-2xs"
-              >
-                Пользователь: user@test.ru
-              </button>
-            </div>
-          </div>
-        )}
-
         {formError && <Alert title={formError} className="mt-5" />}
 
         <form onSubmit={submit} className="mt-6 space-y-4" noValidate>
@@ -183,7 +161,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
           </Button>
         </form>
 
-        {isRegister ? (
+        {isRegister && (
           <p className="mt-4 text-center text-caption text-ink-muted">
             {t('auth.consent')}{' '}
             <Link href={routes.privacy(locale)} className="text-primary underline underline-offset-2">
@@ -191,12 +169,6 @@ export function AuthCard({ mode }: { mode: Mode }) {
             </Link>
             .
           </p>
-        ) : (
-          <div className="mt-5 rounded-control bg-canvas p-3.5 text-caption text-ink-muted">
-            <p className="mb-1.5 font-semibold text-ink">{t('auth.demoHint')}</p>
-            <p>user@test.ru / user123</p>
-            <p>admin@test.ru / admin123</p>
-          </div>
         )}
       </div>
     </div>
