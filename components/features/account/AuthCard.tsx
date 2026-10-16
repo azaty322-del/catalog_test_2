@@ -45,7 +45,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
   const validate = (): boolean => {
     const next: Partial<Record<keyof Fields, string>> = {};
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) next.email = t('auth.errorEmail');
-    if (fields.password.length < 6) next.password = t('auth.errorPassword');
+    if (isRegister ? fields.password.length < 6 : !fields.password) next.password = t('auth.errorPassword');
     if (isRegister && !fields.fullName.trim()) next.fullName = t('auth.errorName');
     setErrors(next);
     return Object.keys(next).length === 0;
