@@ -62,46 +62,64 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'В файле не найдено строк с тайтлами' }, { status: 400 });
     }
 
-    const operations = parsedMovies.map((item: any) => {
-      const slug = item.slug || `title-${item.catalogId ? item.catalogId.toLowerCase() : crypto.randomUUID()}`;
-      const catSlug = getCategorySlug(item.category || 'Природа');
+    // Сопоставляем с существующими записями по ID (экспорт админки) или шифру АЙДИ (таблица заказчика)
+    const existing = await prisma.movie.findMany({ select: { id: true, catalogId: true } });
+    const byId = new Set(existing.map((m) => m.id));
+    const byCatalogId = new Map(existing.filter((m) => m.catalogId).map((m) => [m.catalogId!.toLowerCase(), m.id]));
 
-      const payload = {
-        catalogId: item.catalogId || null,
+    let created = 0;
+    const operations = parsedMovies.map((item) => {
+      // Только заполненные в файле поля: пустая ячейка не затирает данные из админки
+      const fields: Record<string, unknown> = {
+        catalogId: item.catalogId,
         titleRu: item.titleRu,
-        titleEn: item.titleEn || item.titleRu,
-        descriptionRu: item.descriptionRu || '',
-        descriptionEn: item.descriptionEn || '',
+        titleEn: item.titleEn,
+        descriptionRu: item.descriptionRu,
+        descriptionEn: item.descriptionEn,
         category: item.category,
-        categorySlug: catSlug,
-        episodesCount: Number(item.episodesCount) || 1,
-        episodeDuration: item.episodeDuration ? String(item.episodeDuration) : '30',
-        duration: item.duration || '30 мин',
-        totalDurationMinutes: Number(item.totalDurationMinutes) || 30,
-        quality: item.quality || 'HD / 4K',
-        qualities: Array.isArray(item.qualities) ? item.qualities : [item.quality || 'HD / 4K'],
-        country: item.country || 'Россия',
-        countries: Array.isArray(item.countries) ? item.countries : [item.country || 'Россия'],
-        year: Number(item.year) || 2024,
-        yearRange: item.yearRange || String(item.year || 2024),
-        languages: Array.isArray(item.languages) ? item.languages : ['Русский'],
-        author: item.author || null,
-        ageRating: item.ageRating || '12+',
-        poster: item.poster || '',
-        trailerUrl: item.trailerUrl || '',
-        tags: Array.isArray(item.tags) ? item.tags : [],
-        territory: item.territory || 'Весь мир',
-        rightsPeriod: item.rightsPeriod || 'До 31.12.2028',
-        status: 'Опубликован',
+        categorySlug: item.category ? getCategorySlug(item.category) : undefined,
+        episodesCount: item.episodesCount,
+        episodeDuration: item.episodeDuration,
+        duration: item.duration,
+        totalDurationMinutes: item.totalDurationMinutes,
+        quality: item.quality,
+        qualities: item.qualities,
+        country: item.country,
+        countries: item.countries,
+        year: item.year,
+        yearRange: item.yearRange,
+        languages: item.languages,
+        author: item.author,
+        ageRating: item.ageRating,
+        poster: item.poster,
+        trailerUrl: item.trailerUrl,
+        tags: item.tags,
+        territory: item.territory,
+        rightsPeriod: item.rightsPeriod,
       };
+      const data = Object.fromEntries(
+        Object.entries(fields).filter(([, v]) => v !== undefined && v !== '' && !(Array.isArray(v) && v.length === 0))
+      );
 
-      return prisma.movie.upsert({
-        where: { slug },
-        update: payload,
-        create: {
-          id: item.id ? String(item.id) : undefined,
+      const existingId =
+        (item.id && byId.has(item.id) ? item.id : undefined) ||
+        (item.catalogId ? byCatalogId.get(item.catalogId.toLowerCase()) : undefined);
+
+      if (existingId) {
+        return prisma.movie.update({ where: { id: existingId }, data });
+      }
+
+      created++;
+      const slug = `title-${item.catalogId ? item.catalogId.toLowerCase() : crypto.randomUUID()}`;
+      return prisma.movie.create({
+        data: {
+          ...(item.id ? { id: item.id } : {}),
           slug,
-          ...payload,
+          titleRu: item.titleRu,
+          titleEn: item.titleEn || item.titleRu,
+          category: item.category || 'Природа',
+          categorySlug: getCategorySlug(item.category || 'Природа'),
+          ...data,
         },
       });
     });
@@ -111,6 +129,7 @@ export async function POST(req: Request) {
 
     logger.info('EXCEL_IMPORT_SUCCESS', {
       importedCount: parsedMovies.length,
+      created,
       totalCount,
       filename: file.name,
     });
@@ -118,6 +137,8 @@ export async function POST(req: Request) {
     return NextResponse.json({
       ok: true,
       importedCount: parsedMovies.length,
+      created,
+      updated: parsedMovies.length - created,
       totalCount,
     });
   } catch (error: any) {

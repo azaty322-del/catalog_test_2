@@ -31,3 +31,4 @@ Thumbs.db
 # локальные JSON-данные больше не используются — всё в PostgreSQL
 /data
 /public/uploads
+/docs

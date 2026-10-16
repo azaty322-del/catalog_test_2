@@ -23,14 +23,17 @@ export async function POST(req: NextRequest) {
     let matchedUser: User | null = null;
 
     // 1. Администратор — только из .env (ADMIN_EMAIL / ADMIN_PASSWORD)
+    // Профиль (имя, должность) берём из БД, если там есть запись с этим email
     if (adminEmail && adminPassword && cleanEmail === adminEmail && password === adminPassword) {
+      const profile = await prisma.user.findUnique({ where: { email: cleanEmail } });
       matchedUser = {
         id: 'admin-1',
         email: cleanEmail,
-        fullName: 'Администратор каталога',
+        fullName: profile?.fullName || 'Администратор',
         role: 'ADMIN',
-        company: 'UTV Media',
-        position: 'Главный редактор',
+        company: profile?.company || undefined,
+        position: profile?.position || undefined,
+        phone: profile?.phone || undefined,
       };
     }
 

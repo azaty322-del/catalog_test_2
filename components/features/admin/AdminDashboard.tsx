@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo, ChangeEvent } from 'react';
 import Link from 'next/link';
+import { useAuth } from '@/providers/AuthProvider';
 import {
   LayoutGrid,
   Film,
@@ -109,6 +110,9 @@ export interface AdminDashboardProps {
 
 export function AdminDashboard({ movies: _initialMovies, categories: _initialCategories }: AdminDashboardProps = {}) {
   const [tab, setTab] = useState<Tab>('dashboard');
+  const { user } = useAuth();
+  const userName = user?.fullName || user?.email || '';
+  const userInitials = userName.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
   const [movies, setMovies] = useState<MovieItem[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [orders, setOrders] = useState<any[]>([]);
@@ -554,10 +558,10 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
               <span className="px-2 py-1 text-slate-400 cursor-pointer">EN</span>
             </div>
             <div className="flex items-center gap-3 pl-3 border-l border-slate-200">
-              <div className="w-10 h-10 rounded-full bg-slate-200 font-bold flex items-center justify-center text-slate-600">АК</div>
+              <div className="w-10 h-10 rounded-full bg-slate-200 font-bold flex items-center justify-center text-slate-600">{userInitials}</div>
               <div>
-                <div className="text-sm font-semibold text-slate-900">Александр К.</div>
-                <div className="text-[11px] text-slate-400">Суперпользователь</div>
+                <div className="text-sm font-semibold text-slate-900">{userName}</div>
+                <div className="text-[11px] text-slate-400">{user?.position || 'Администратор'}</div>
               </div>
             </div>
           </div>
