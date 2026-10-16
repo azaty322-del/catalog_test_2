@@ -211,6 +211,7 @@ const existingRaw = JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
 const existingMovies = Array.isArray(existingRaw) ? existingRaw : (existingRaw.movies || []);
 
 console.log(`Existing movies count: ${existingMovies.length}`);
+const usedExisting = new Set();
 
 // Нормализатор названий для сопоставления
 function norm(str) {
@@ -244,13 +245,14 @@ dataRows.forEach((row, idx) => {
   const catInfo = CATEGORY_GROUPS[groupLetter] || { ru: 'Природа', slug: 'nature', en: 'Nature' };
 
   // Поиск существующего фильма
-  const existing = existingMovies.find(m => {
-    const existingTitleRu = typeof m.title === 'object' ? m.title.ru : m.title;
-    const existingTitleEn = typeof m.title === 'object' ? m.title.en : '';
-    return norm(existingTitleRu) === norm(titleRaw) ||
-           norm(existingTitleRu).includes(norm(titleRaw)) ||
-           norm(titleRaw).includes(norm(existingTitleRu));
-  }) || {};
+  // Сначала точное совпадение, потом нечёткое — и только среди ещё не занятых записей,
+  // иначе «[Про]Трактат» и «[Про]Трактат: История…» получают один и тот же id.
+  const titleRuOf = m => norm(typeof m.title === 'object' ? m.title.ru : m.title);
+  const free = existingMovies.filter(m => !usedExisting.has(m));
+  const existing = free.find(m => titleRuOf(m) === norm(titleRaw)) ||
+    free.find(m => titleRuOf(m).includes(norm(titleRaw)) || norm(titleRaw).includes(titleRuOf(m))) ||
+    {};
+  usedExisting.add(existing);
 
   const epRange = parseEpisodeDurationRange(epDurationRaw);
   const totalMinutes = parseTotalDurationMinutes(totalDurationRaw);
