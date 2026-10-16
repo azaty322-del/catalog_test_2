@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import { prisma, isDatabaseConfigured } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
-
-const SETTINGS_FILE = path.join(process.cwd(), 'data', 'settings.json');
 
 interface AppSettings {
   siteName: string;
@@ -15,57 +11,28 @@ interface AppSettings {
   consoleNoise?: string;
 }
 
-function readLocalSettings(): AppSettings {
-  const defaults: AppSettings = {
-    siteName: 'Каталог контента UTV Media',
-    adminEmail: process.env.ADMIN_NOTIFICATION_EMAIL || process.env.ADMIN_EMAIL || 'admin@utvmedia.ru',
-    telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
-    telegramChatId: process.env.TELEGRAM_CHAT_ID || '',
-    notificationEmails: 'orders@utv.ru, managers@utvmedia.ru',
-    consoleNoise: 'true',
-  };
+const DEFAULTS: AppSettings = {
+  siteName: 'Каталог контента UTV Media',
+  adminEmail: process.env.ADMIN_NOTIFICATION_EMAIL || process.env.ADMIN_EMAIL || '',
+  telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
+  telegramChatId: process.env.TELEGRAM_CHAT_ID || '',
+  notificationEmails: '',
+  consoleNoise: 'true',
+};
 
-  try {
-    if (!fs.existsSync(SETTINGS_FILE)) {
-      fs.writeFileSync(SETTINGS_FILE, JSON.stringify(defaults, null, 2), 'utf-8');
-      return defaults;
-    }
-    const content = fs.readFileSync(SETTINGS_FILE, 'utf-8');
-    return { ...defaults, ...JSON.parse(content) };
-  } catch (error) {
-    console.error('Ошибка чтения settings.json:', error);
-    return defaults;
-  }
-}
-
-function writeLocalSettings(settings: AppSettings): void {
-  try {
-    fs.writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2), 'utf-8');
-  } catch (error) {
-    console.error('Ошибка записи settings.json:', error);
-  }
+// Настройки из БД поверх значений по умолчанию из .env
+async function readSettings(): Promise<AppSettings> {
+  const rows = await prisma.setting.findMany();
+  return { ...DEFAULTS, ...Object.fromEntries(rows.map((r) => [r.key, r.value])) };
 }
 
 export async function GET() {
-  const defaults = readLocalSettings();
-
-  // 1. Попытка чтения настроек из PostgreSQL через Prisma
-  if (isDatabaseConfigured()) {
-    try {
-      const dbSettings = await prisma.setting.findMany();
-      if (dbSettings && dbSettings.length > 0) {
-        const settingsMap: any = { ...defaults };
-        dbSettings.forEach((s) => {
-          settingsMap[s.key] = s.value;
-        });
-        return NextResponse.json({ settings: settingsMap, source: 'postgresql' });
-      }
-    } catch (dbErr) {
-      console.warn('[API/settings] Ошибка чтения настроек из Prisma:', dbErr);
-    }
+  try {
+    return NextResponse.json({ settings: await readSettings() });
+  } catch (error: any) {
+    logger.error('SETTINGS_GET_ERROR', { error: error?.message });
+    return NextResponse.json({ error: 'Ошибка получения настроек' }, { status: 500 });
   }
-
-  return NextResponse.json({ settings: defaults, source: 'json_fallback' });
 }
 
 export async function POST(req: NextRequest) {
@@ -106,7 +73,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Сохранение настроек
-    const current = readLocalSettings();
+    const current = await readSettings();
     const updated: AppSettings = {
       siteName: body.siteName !== undefined ? String(body.siteName).trim() : current.siteName,
       adminEmail: body.adminEmail !== undefined ? String(body.adminEmail).trim() : current.adminEmail,
@@ -116,27 +83,16 @@ export async function POST(req: NextRequest) {
       consoleNoise: body.consoleNoise !== undefined ? String(body.consoleNoise) : current.consoleNoise,
     };
 
-    // 1. Сохранение в PostgreSQL через Prisma
-    if (isDatabaseConfigured()) {
-      try {
-        const entries = Object.entries(updated);
-        await prisma.$transaction(
-          entries.map(([key, value]) =>
-            prisma.setting.upsert({
-              where: { key },
-              update: { value: String(value) },
-              create: { key, value: String(value) },
-            })
-          )
-        );
-        logger.info('SETTINGS_PRISMA_UPDATED', { updatedKeys: Object.keys(updated) });
-      } catch (dbErr: any) {
-        logger.warn('PRISMA_SETTINGS_UPDATE_FAILED', { error: dbErr?.message });
-      }
-    }
-
-    // 2. Резервное сохранение в JSON
-    writeLocalSettings(updated);
+    await prisma.$transaction(
+      Object.entries(updated).map(([key, value]) =>
+        prisma.setting.upsert({
+          where: { key },
+          update: { value: String(value) },
+          create: { key, value: String(value) },
+        })
+      )
+    );
+    logger.info('SETTINGS_PRISMA_UPDATED', { updatedKeys: Object.keys(updated) });
 
     return NextResponse.json({ ok: true, settings: updated });
   } catch (error: any) {

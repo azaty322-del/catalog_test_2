@@ -1,12 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import { prisma, isDatabaseConfigured } from '@/lib/prisma';
-import { getAllMovies } from '@/lib/catalog';
+import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { getCategorySlug } from '@/lib/filters';
-
-const dataFilePath = path.join(process.cwd(), 'data', 'data.json');
 
 // Преобразование модели Prisma Movie в объект, совместимый с фронтендом
 function formatMovieFromPrisma(m: any) {
@@ -64,165 +59,143 @@ export async function GET(req: NextRequest) {
     const categoryParam = searchParams.get('category');
     const queryParam = searchParams.get('q');
 
-    // 1. Попытка чтения из PostgreSQL через Prisma
-    if (isDatabaseConfigured()) {
-      try {
-        const whereClause: any = {};
+    const whereClause: any = {};
 
-        if (categoryParam) {
-          whereClause.categorySlug = getCategorySlug(categoryParam);
-        }
-
-        if (queryParam) {
-          whereClause.OR = [
-            { titleRu: { contains: queryParam, mode: 'insensitive' } },
-            { titleEn: { contains: queryParam, mode: 'insensitive' } },
-            { descriptionRu: { contains: queryParam, mode: 'insensitive' } },
-          ];
-        }
-
-        const dbMovies = await prisma.movie.findMany({
-          where: whereClause,
-          orderBy: { createdAt: 'asc' },
-        });
-
-        if (dbMovies && dbMovies.length > 0) {
-          let result = dbMovies.map(formatMovieFromPrisma);
-
-          if (idsParam) {
-            const ids = idsParam.split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
-            result = result.filter((m) => {
-              const mId = String(m.id).toLowerCase();
-              const mSlug = String(m.slug || '').toLowerCase();
-              const mAid = String(m.catalogId || '').toLowerCase();
-              return ids.some((id) => id === mId || id === mSlug || id === mAid);
-            });
-          }
-
-          return NextResponse.json({ movies: result, source: 'postgresql' });
-        }
-      } catch (dbErr) {
-        console.warn('[API/movies] Ошибка запроса к PostgreSQL, переключаемся на локальные данные:', dbErr);
-      }
+    if (categoryParam) {
+      whereClause.categorySlug = getCategorySlug(categoryParam);
     }
 
-    // 2. Fallback к локальному каталогу
-    const all = getAllMovies();
+    if (queryParam) {
+      whereClause.OR = [
+        { titleRu: { contains: queryParam, mode: 'insensitive' } },
+        { titleEn: { contains: queryParam, mode: 'insensitive' } },
+        { descriptionRu: { contains: queryParam, mode: 'insensitive' } },
+      ];
+    }
+
+    const dbMovies = await prisma.movie.findMany({
+      where: whereClause,
+      orderBy: { createdAt: 'asc' },
+    });
+
+    let result = dbMovies.map(formatMovieFromPrisma);
+
     if (idsParam) {
       const ids = idsParam.split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
-      const filtered = all.filter((m) => {
+      result = result.filter((m) => {
         const mId = String(m.id).toLowerCase();
         const mSlug = String(m.slug || '').toLowerCase();
-        const mAid = String((m as any).catalogId || '').toLowerCase();
+        const mAid = String(m.catalogId || '').toLowerCase();
         return ids.some((id) => id === mId || id === mSlug || id === mAid);
       });
-      return NextResponse.json({ movies: filtered, source: 'json_fallback' });
     }
 
-    return NextResponse.json({ movies: all, source: 'json_fallback' });
+    return NextResponse.json({ movies: result });
   } catch (error: any) {
     logger.error('MOVIES_GET_ERROR', { error: error?.message });
     return NextResponse.json({ error: 'Ошибка получения тайтлов' }, { status: 500 });
   }
 }
 
+// Поле БД → ключи входящего объекта, из которых оно вычисляется
+const FIELD_SOURCES: Record<string, string[]> = {
+  catalogId: ['catalogId'],
+  titleRu: ['title', 'titleRu'],
+  titleEn: ['title', 'titleEn'],
+  descriptionRu: ['description', 'descriptionRu'],
+  descriptionEn: ['description', 'descriptionEn'],
+  category: ['category'],
+  categorySlug: ['category', 'categorySlug'],
+  episodesCount: ['episodesCount', 'episodes'],
+  episodeDuration: ['episodeDuration'],
+  duration: ['duration'],
+  totalDurationMinutes: ['totalDurationMinutes'],
+  status: ['status'],
+  quality: ['qualities', 'quality'],
+  qualities: ['qualities', 'quality'],
+  country: ['countries', 'country'],
+  countries: ['countries', 'country'],
+  year: ['year'],
+  yearRange: ['yearRange'],
+  languages: ['languages', 'audioLang'],
+  author: ['author'],
+  ageRating: ['ageRating'],
+  poster: ['poster', 'image'],
+  trailerUrl: ['trailerUrl'],
+  stills: ['stills'],
+  tags: ['tags'],
+  territory: ['territory'],
+  rightsPeriod: ['rightsPeriod'],
+  views: ['views'],
+};
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const incomingList = Array.isArray(body) ? body : [body];
 
-    // 1. Сохранение в PostgreSQL через Prisma
-    if (isDatabaseConfigured()) {
-      try {
-        const operations = incomingList.map((item: any) => {
-          const titleRu = typeof item.title === 'object' ? item.title.ru : item.title;
-          const titleEn = typeof item.title === 'object' ? item.title.en : (item.titleRu || titleRu);
-          const descRu = typeof item.description === 'object' ? item.description.ru : (item.descriptionRu || item.description || '');
-          const descEn = typeof item.description === 'object' ? item.description.en : (item.descriptionEn || descRu);
-          const id = item.id ? String(item.id) : crypto.randomUUID();
-          const slug = item.slug || `title-${item.catalogId ? item.catalogId.toLowerCase() : id}`;
-          const catSlug = getCategorySlug(item.category || item.categorySlug || 'Природа');
+    const operations = incomingList.map((item: any) => {
+      const titleRu = (typeof item.title === 'object' ? item.title?.ru : item.title) || item.titleRu || 'Без названия';
+      const titleEn = (typeof item.title === 'object' ? item.title?.en : item.titleEn) || titleRu;
+      const descRu = typeof item.description === 'object' ? item.description.ru : (item.descriptionRu || item.description || '');
+      const descEn = typeof item.description === 'object' ? item.description.en : (item.descriptionEn || descRu);
+      const id = item.id ? String(item.id) : crypto.randomUUID();
+      const slug = item.slug || `title-${item.catalogId ? item.catalogId.toLowerCase() : id}`;
+      const catSlug = getCategorySlug(item.category || item.categorySlug || 'Природа');
 
-          const movieData = {
-            catalogId: item.catalogId || null,
-            titleRu,
-            titleEn,
-            descriptionRu: descRu,
-            descriptionEn: descEn,
-            category: item.category || 'Природа',
-            categorySlug: catSlug,
-            episodesCount: Number(item.episodesCount || item.episodes) || 1,
-            episodeDuration: typeof item.episodeDuration === 'object' && item.episodeDuration
-              ? `${item.episodeDuration.min}-${item.episodeDuration.max}`
-              : String(item.episodeDuration || '30'),
-            duration: String(item.duration || '30 мин'),
-            totalDurationMinutes: Number(item.totalDurationMinutes) || 30,
-            status: item.status || 'Опубликован',
-            quality: Array.isArray(item.qualities) ? item.qualities[0] : (item.quality || 'HD / 4K'),
-            qualities: Array.isArray(item.qualities) ? item.qualities : [item.quality || 'HD / 4K'],
-            country: Array.isArray(item.countries) ? item.countries[0] : (item.country || 'Россия'),
-            countries: Array.isArray(item.countries) ? item.countries : [item.country || 'Россия'],
-            year: Number(item.year) || 2024,
-            yearRange: item.yearRange || String(item.year || 2024),
-            languages: Array.isArray(item.languages) ? item.languages : ['Русский'],
-            author: item.author || null,
-            ageRating: item.ageRating || '12+',
-            poster: item.poster || item.image || '',
-            trailerUrl: item.trailerUrl || '',
-            stills: Array.isArray(item.stills) ? item.stills : [],
-            tags: Array.isArray(item.tags) ? item.tags : [],
-            territory: item.territory || 'Весь мир',
-            rightsPeriod: item.rightsPeriod || 'До 31.12.2028',
-            views: Number(item.views) || 0,
-          };
+      const movieData = {
+        catalogId: item.catalogId || null,
+        titleRu,
+        titleEn,
+        descriptionRu: descRu,
+        descriptionEn: descEn,
+        category: item.category || 'Природа',
+        categorySlug: catSlug,
+        episodesCount: Number(item.episodesCount || item.episodes) || 1,
+        episodeDuration: typeof item.episodeDuration === 'object' && item.episodeDuration
+          ? `${item.episodeDuration.min}-${item.episodeDuration.max}`
+          : String(item.episodeDuration || '30'),
+        duration: String(item.duration || '30 мин'),
+        totalDurationMinutes: Number(item.totalDurationMinutes) || 30,
+        status: item.status || 'Опубликован',
+        quality: Array.isArray(item.qualities) ? item.qualities[0] : (item.quality || 'HD / 4K'),
+        qualities: Array.isArray(item.qualities) ? item.qualities : [item.quality || 'HD / 4K'],
+        country: Array.isArray(item.countries) ? item.countries[0] : (item.country || 'Россия'),
+        countries: Array.isArray(item.countries) ? item.countries : [item.country || 'Россия'],
+        year: Number(item.year) || 2024,
+        yearRange: item.yearRange || String(item.year || 2024),
+        languages: Array.isArray(item.languages) ? item.languages : (item.audioLang ? [item.audioLang] : ['Русский']),
+        author: item.author || null,
+        ageRating: item.ageRating || '12+',
+        poster: item.poster || item.image || '',
+        trailerUrl: item.trailerUrl || '',
+        stills: Array.isArray(item.stills) ? item.stills : [],
+        tags: Array.isArray(item.tags) ? item.tags : [],
+        territory: item.territory || 'Весь мир',
+        rightsPeriod: item.rightsPeriod || 'До 31.12.2028',
+        views: Number(item.views) || 0,
+      };
 
-          // id — стабильный ключ (админка не присылает slug)
-          return prisma.movie.upsert({
-            where: { id },
-            update: movieData,
-            create: { id, slug, ...movieData },
-          });
-        });
+      // При обновлении трогаем только поля, которые реально пришли (форма админки шлёт не все)
+      const update = Object.fromEntries(
+        Object.entries(movieData).filter(([key]) => FIELD_SOURCES[key].some((src) => item[src] !== undefined))
+      );
 
-        await prisma.$transaction(operations);
-        logger.info('MOVIES_PRISMA_UPSERTED', { count: incomingList.length });
-      } catch (dbErr: any) {
-        logger.error('MOVIES_PRISMA_UPSERT_FAILED', { error: dbErr?.message });
-        return NextResponse.json({ error: 'Ошибка сохранения в БД', details: dbErr?.message }, { status: 500 });
-      }
-    }
+      // id — стабильный ключ (админка не присылает slug)
+      return prisma.movie.upsert({
+        where: { id },
+        update,
+        create: { id, slug, ...movieData },
+      });
+    });
 
-    // 2. Резервное обновление локального data/data.json
-    try {
-      if (fs.existsSync(dataFilePath)) {
-        const raw = JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
-        const existingMovies = Array.isArray(raw) ? raw : (raw.movies || []);
-
-        incomingList.forEach((incoming: any) => {
-          const idx = existingMovies.findIndex((m: any) =>
-            String(m.id) === String(incoming.id) ||
-            m.slug === incoming.slug ||
-            (incoming.catalogId && m.catalogId === incoming.catalogId)
-          );
-
-          if (idx >= 0) {
-            existingMovies[idx] = { ...existingMovies[idx], ...incoming };
-          } else {
-            existingMovies.push(incoming);
-          }
-        });
-
-        const outputData = Array.isArray(raw) ? existingMovies : { ...raw, movies: existingMovies };
-        fs.writeFileSync(dataFilePath, JSON.stringify(outputData, null, 2), 'utf-8');
-      }
-    } catch (fsErr) {
-      console.error('Ошибка записи data.json:', fsErr);
-    }
+    await prisma.$transaction(operations);
+    logger.info('MOVIES_PRISMA_UPSERTED', { count: incomingList.length });
 
     return NextResponse.json({ success: true, count: incomingList.length });
   } catch (error: any) {
     logger.error('MOVIES_POST_ERROR', { error: error?.message });
-    return NextResponse.json({ error: 'Ошибка сохранения тайтлов' }, { status: 500 });
+    return NextResponse.json({ error: 'Ошибка сохранения тайтлов', details: error?.message }, { status: 500 });
   }
 }
 
@@ -236,30 +209,12 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: 'Укажите id или slug для удаления' }, { status: 400 });
     }
 
-    if (isDatabaseConfigured()) {
-      try {
-        if (id) {
-          await prisma.movie.deleteMany({ where: { id } });
-        } else if (slug) {
-          await prisma.movie.deleteMany({ where: { slug } });
-        }
-        logger.info('MOVIE_PRISMA_DELETED', { id, slug });
-      } catch (dbErr: any) {
-        logger.warn('MOVIE_PRISMA_DELETE_FAILED', { error: dbErr?.message });
-      }
-    }
-
-    // Обновляем локальный json
-    if (fs.existsSync(dataFilePath)) {
-      const raw = JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
-      const existingMovies = Array.isArray(raw) ? raw : (raw.movies || []);
-      const filtered = existingMovies.filter((m: any) => m.id !== id && m.slug !== slug);
-      const outputData = Array.isArray(raw) ? filtered : { ...raw, movies: filtered };
-      fs.writeFileSync(dataFilePath, JSON.stringify(outputData, null, 2), 'utf-8');
-    }
+    await prisma.movie.deleteMany({ where: id ? { id } : { slug: slug! } });
+    logger.info('MOVIE_PRISMA_DELETED', { id, slug });
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    logger.error('MOVIE_DELETE_ERROR', { error: error?.message });
     return NextResponse.json({ error: 'Ошибка удаления' }, { status: 500 });
   }
 }

@@ -20,22 +20,16 @@ export interface OrderData {
   status: 'new' | 'processing' | 'completed' | 'cancelled';
 }
 
-import fs from 'fs';
-import path from 'path';
+import { prisma } from './prisma';
 
-function getActiveSettings() {
-  const SETTINGS_FILE = path.join(process.cwd(), 'data', 'settings.json');
-  let fileSettings: any = {};
-  try {
-    if (fs.existsSync(SETTINGS_FILE)) {
-      fileSettings = JSON.parse(fs.readFileSync(SETTINGS_FILE, 'utf-8'));
-    }
-  } catch {}
+async function getActiveSettings() {
+  const rows = await prisma.setting.findMany();
+  const db: Record<string, string> = Object.fromEntries(rows.map((r) => [r.key, r.value]));
 
   return {
-    telegramBotToken: fileSettings.telegramBotToken || process.env.TELEGRAM_BOT_TOKEN,
-    telegramChatId: fileSettings.telegramChatId || process.env.TELEGRAM_CHAT_ID,
-    notificationEmail: fileSettings.adminEmail || fileSettings.notificationEmails || process.env.ADMIN_NOTIFICATION_EMAIL || process.env.ADMIN_EMAIL,
+    telegramBotToken: db.telegramBotToken || process.env.TELEGRAM_BOT_TOKEN,
+    telegramChatId: db.telegramChatId || process.env.TELEGRAM_CHAT_ID,
+    notificationEmail: db.adminEmail || db.notificationEmails || process.env.ADMIN_NOTIFICATION_EMAIL || process.env.ADMIN_EMAIL,
   };
 }
 
@@ -43,7 +37,7 @@ function getActiveSettings() {
  * Отправка уведомления в Telegram через Bot API
  */
 export async function sendTelegramNotification(order: OrderData): Promise<boolean> {
-  const settings = getActiveSettings();
+  const settings = await getActiveSettings();
   const token = settings.telegramBotToken;
   const chatId = settings.telegramChatId;
 
@@ -92,7 +86,7 @@ export async function sendTelegramNotification(order: OrderData): Promise<boolea
  * Отправка уведомления на Email
  */
 export async function sendEmailNotification(order: OrderData): Promise<boolean> {
-  const settings = getActiveSettings();
+  const settings = await getActiveSettings();
   const recipient = settings.notificationEmail;
   if (!recipient) {
     console.log('[Notification] Email администратора не задан в Настройках или .env.local');

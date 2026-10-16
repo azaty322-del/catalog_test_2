@@ -37,7 +37,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     notFound();
   }
 
-  const categories = getCategories();
+  const categories = await getCategories();
 
   return (
     <I18nProvider locale={locale}>

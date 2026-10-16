@@ -34,11 +34,8 @@ export async function POST(request: Request) {
 
     logger.info('IMAGE_UPLOAD_SUCCESS', { filename, size: buffer.length });
 
-    // Возвращаем прямую ссылку
-    return NextResponse.json({
-      url: `/uploads/${filename}`,
-      fallbackUrl: `/api/uploads/${filename}`,
-    });
+    // Через API-роут: в проде Next не отдаёт файлы, добавленные в public/ после сборки
+    return NextResponse.json({ url: `/api/uploads/${filename}` });
   } catch (error: any) {
     logger.error('IMAGE_UPLOAD_ERROR', { error: error.message });
     return NextResponse.json({ error: 'Ошибка сохранения файла: ' + error.message }, { status: 500 });

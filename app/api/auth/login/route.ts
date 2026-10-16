@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma, isDatabaseConfigured } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 import {
-  readUsers,
   verifyPassword,
   createSessionToken,
   SESSION_COOKIE_NAME,
@@ -35,43 +34,19 @@ export async function POST(req: NextRequest) {
       };
     }
 
-    // 2. Проверка в PostgreSQL через Prisma
-    if (!matchedUser && isDatabaseConfigured()) {
-      try {
-        const dbUser = await prisma.user.findUnique({
-          where: { email: cleanEmail },
-        });
-
-        if (dbUser && verifyPassword(password, dbUser.password, dbUser.salt)) {
-          matchedUser = {
-            id: dbUser.id,
-            email: dbUser.email,
-            fullName: dbUser.fullName,
-            role: dbUser.role as Role,
-            company: dbUser.company || undefined,
-            position: dbUser.position || undefined,
-            phone: dbUser.phone || undefined,
-          };
-        }
-      } catch (dbErr: any) {
-        logger.warn('PRISMA_LOGIN_CHECK_FAILED', { error: dbErr?.message });
-      }
-    }
-
-    // 3. Резервная проверка в локальном JSON (если БД нет или пользователь там)
+    // 2. Пользователи из PostgreSQL
     if (!matchedUser) {
-      const users = readUsers();
-      const found = users.find((u) => u.email.toLowerCase() === cleanEmail);
+      const dbUser = await prisma.user.findUnique({ where: { email: cleanEmail } });
 
-      if (found && verifyPassword(password, found.passwordHash, found.salt)) {
+      if (dbUser && verifyPassword(password, dbUser.password, dbUser.salt)) {
         matchedUser = {
-          id: found.id,
-          email: found.email,
-          fullName: found.fullName,
-          role: found.role,
-          company: found.company,
-          position: found.position,
-          phone: found.phone,
+          id: dbUser.id,
+          email: dbUser.email,
+          fullName: dbUser.fullName,
+          role: dbUser.role as Role,
+          company: dbUser.company || undefined,
+          position: dbUser.position || undefined,
+          phone: dbUser.phone || undefined,
         };
       }
     }

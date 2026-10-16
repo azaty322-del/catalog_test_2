@@ -27,3 +27,7 @@ next-env.d.ts
 # OS files
 .DS_Store
 Thumbs.db
+
+# локальные JSON-данные больше не используются — всё в PostgreSQL
+/data
+/public/uploads

@@ -1,18 +1,9 @@
 import crypto from 'crypto';
-import fs from 'fs';
-import path from 'path';
 import type { User, Role } from './types';
 
-const USERS_FILE = path.join(process.cwd(), 'data', 'users.json');
 const SESSION_COOKIE_NAME = 'utv_session';
 if (!process.env.SESSION_SECRET) throw new Error('SESSION_SECRET не задан в .env');
 const SECRET: string = process.env.SESSION_SECRET;
-
-export interface StoredUser extends User {
-  passwordHash: string;
-  salt: string;
-  createdAt: string;
-}
 
 export function hashPassword(password: string, salt?: string): { hash: string; salt: string } {
   const s = salt || crypto.randomBytes(16).toString('hex');
@@ -23,27 +14,6 @@ export function hashPassword(password: string, salt?: string): { hash: string; s
 export function verifyPassword(password: string, hash: string, salt: string): boolean {
   const result = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
   return result === hash;
-}
-
-export function readUsers(): StoredUser[] {
-  try {
-    if (!fs.existsSync(USERS_FILE)) {
-      fs.writeFileSync(USERS_FILE, JSON.stringify([], null, 2), 'utf-8');
-      return [];
-    }
-    const data = fs.readFileSync(USERS_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-}
-
-export function writeUsers(users: StoredUser[]): void {
-  try {
-    fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), 'utf-8');
-  } catch (e) {
-    console.error('Ошибка записи users.json:', e);
-  }
 }
 
 export function createSessionToken(user: User): string {

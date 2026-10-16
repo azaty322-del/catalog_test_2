@@ -25,7 +25,7 @@ export default async function FilmPage({ params }: FilmPageProps) {
 
   const locale = params.locale as Locale;
   const t = getTranslator(locale);
-  const movie = getMovieBySlug(params.slug);
+  const movie = await getMovieBySlug(params.slug);
 
   if (!movie) {
     notFound();

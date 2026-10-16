@@ -1,6 +1,4 @@
-import fs from 'fs';
-import path from 'path';
-import { prisma, isDatabaseConfigured } from './prisma';
+import { prisma } from './prisma';
 
 export type LogLevel = 'INFO' | 'WARN' | 'ERROR' | 'SECURITY';
 
@@ -13,8 +11,6 @@ export interface LogEntry {
   details?: any;
   ip?: string;
 }
-
-const auditLogFilePath = path.join(process.cwd(), 'data', 'audit.json');
 
 // Чувствительные ключи, которые маскируются в логах
 const SENSITIVE_KEYS = ['password', 'token', 'telegramBotToken', 'botToken', 'secret', 'hash'];
@@ -62,31 +58,15 @@ export function emitConsoleNoise() {
 
 async function saveAuditLog(entry: LogEntry) {
   try {
-    if (isDatabaseConfigured()) {
-      await prisma.auditLog.create({
-        data: {
-          level: entry.level,
-          action: entry.action,
-          actor: entry.actor || 'SYSTEM',
-          details: entry.details ? JSON.stringify(entry.details) : null,
-          ip: entry.ip || null,
-        },
-      });
-      return;
-    }
-
-    // Резервное сохранение в JSON если БД временно недоступна
-    let logs: LogEntry[] = [];
-    if (fs.existsSync(auditLogFilePath)) {
-      try {
-        logs = JSON.parse(fs.readFileSync(auditLogFilePath, 'utf-8'));
-      } catch {
-        logs = [];
-      }
-    }
-    logs.unshift({ ...entry, id: `log-${Date.now()}-${Math.random().toString(36).substring(2, 6)}` });
-    if (logs.length > 500) logs = logs.slice(0, 500);
-    fs.writeFileSync(auditLogFilePath, JSON.stringify(logs, null, 2), 'utf-8');
+    await prisma.auditLog.create({
+      data: {
+        level: entry.level,
+        action: entry.action,
+        actor: entry.actor || 'SYSTEM',
+        details: entry.details ? JSON.stringify(entry.details) : null,
+        ip: entry.ip || null,
+      },
+    });
   } catch (err) {
     console.error('[Logger] Ошибка сохранения лога:', err);
   }

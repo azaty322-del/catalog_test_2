@@ -335,18 +335,22 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
     }
   }, [tab, logLevelFilter]);
 
-  const saveMovies = async (updatedList: MovieItem[]) => {
+  // Сохраняем только изменённую карточку — иначе удалённые в БД записи создавались бы заново
+  const saveMovie = async (movie: MovieItem, updatedList: MovieItem[]) => {
     setMovies(updatedList);
     try {
-      await fetch('/api/movies', {
+      const res = await fetch('/api/movies', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedList),
+        body: JSON.stringify(movie),
       });
+      if (!res.ok) throw new Error();
     } catch {
       alert('Ошибка при сохранении базы данных');
+      loadMovies();
     }
   };
+
 
   // 10 русских карточек категорий с автоподбором реального постера из фильмов
   const categoryCards = useMemo(() => {
@@ -419,7 +423,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
       ? movies.map((m) => (m.id === movieToSave.id ? movieToSave : m))
       : [movieToSave, ...movies];
 
-    saveMovies(updated);
+    saveMovie(movieToSave, updated);
     setIsEditing(false);
     setCurrentMovie(null);
   };
@@ -443,6 +447,7 @@ export function AdminDashboard({ movies: _initialMovies, categories: _initialCat
     try {
       const res = await fetch('/api/upload', { method: 'POST', body: formData });
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
       if (field === 'poster') {
         setCurrentMovie({ ...currentMovie, poster: data.url });
       } else {
